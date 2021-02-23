@@ -1,6 +1,6 @@
-# APP | VIII Padel Tournament CSNI
+# PWA | VIII Padel Tournament CSNI
 ***
-Web application of the VIII CSNI Padel Tournament.
+Progressive Web Application of the VIII CSNI Padel Tournament.
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Screenshot](#screenshot)
@@ -20,6 +20,17 @@ A list of technologies used within the project:
 * [Javascript](https://262.ecma-international.org/6.0/): Version ES6
 ### Installation
 ***
-A little intro about the installation.
-You only have to access the site link with a web browser, you don't need to download anything.  
-Link: http://bit.ly/8_torneo-padel_csni
+The application is accessed through the following link: http://bit.ly/8_torneo-padel_csni  
+To install the application on your computer or mobile device, you must follow the following steps:  
+1. **Open the application.** You will see a screen like the one below.  
+
+    ![Install PWA 1](https://i.imgur.com/EmxwUFi.jpg)
+2. After passing the main window, a pop-up window will open. **We select where it says: "Add to the home screen".**  
+
+    ![Install PWA 2](https://i.imgur.com/hUa5koS.jpg)
+3. It asks us if we want to install the application. **We select install.**  
+
+    ![Install PWA 3](https://i.imgur.com/e40Zr6v.jpg)
+4. Once installed, a shortcut button will appear on our screen. **We can already enter through it.**  
+
+    ![Install PWA 4](https://i.imgur.com/uDuQXLm.jpg)
