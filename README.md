@@ -22,3 +22,4 @@ A list of technologies used within the project:
 ***
 A little intro about the installation.
 You only have to access the site link with a web browser, you don't need to download anything.
+Link: http://bit.ly/8_torneo-padel_csni
