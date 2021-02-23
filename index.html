@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VIII Torneo CSNI 2021</title>
-    <link rel="icon" type="image/png" href="img/logo_8csni.jpg" sizes="64x64">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Bienvenid@s a la aplicación del VIII Torneo de Padel CSNI, donde podrás encontrar información actualizada de los resultados y estadísticas de todos los partidos." />
+
+    <meta name="theme-color" content="#22356D" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="shortcut icon" type="image/png" href="./img/favicon.png" />
+    <link rel="apple-touch-icon" href="./img/8csni.png" />
+    <link rel="apple-touch-startup-image" href="./img/8csni.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/e73b09ad2f.js" crossorigin="anonymous"></script>
 </head>
 <body> 
@@ -16,7 +27,7 @@
         <div class="front-main" id="front-index">
             <div class="front-cont">
                 <div class="front1">
-                    <img src=img/logo_8csni.png alt="Logo" id="logo-ini" onclick="ingresar()">
+                    <img src=./img/8csni-wb.png alt="Logo" id="logo-ini" onclick="ingresar()" />
                 </div>
                 <p class="front-lang" id="fl-esp" onclick="tradESP()">ESP</p>
                 <p class="front-lang" id="fl-eng" onclick="tradENG()">ENG</p>
@@ -24,12 +35,12 @@
             </div>
         </div>
         <header class="header">
-            <a href="#" class="logo"><img src=img/logo_8csni.png alt="Logo"></a>
+            <a href="#" class="logo"><img src=./img/8csni-wb.png alt="Logo"></a>
             <div class="title">
                 <h1 id="title-h1">VIII Torneo Padel CSNI</h1>
             </div>
             <div class="lang-menu">
-                <img class="world" src="img/world.svg" alt="Ico Lang">
+                <img class="world" src="./img/world.svg" alt="Ico Lang" />
                 <div class="lang-opc">
                         <p class="link-lang" id="t-esp" onclick="tradESP()">Español</p>
                         <p class="link-lang" id="t-eng" onclick="tradENG()">English</p>
@@ -2733,11 +2744,8 @@
             </a>
         </footer>
     </div>
-    <script src="js/txtESP.js"></script>
-    <script src="js/txtENG.js"></script>
-    <script src="js/txtCAT.js"></script>
-    <script src="js/translate.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+    <script src="./translate.js"></script>
+    <script src="./data.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>
