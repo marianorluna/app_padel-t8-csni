@@ -2,7 +2,7 @@
     "name": "VIII Torneo CSNI 2021",
     "short_name": "VIII Torneo CSNI",
     "description": "Bienvenid@s a la aplicación del VIII Torneo de Padel CSNI, donde podrás encontrar información actualizada de los resultados y estadísticas de todos los partidos.",
-    "background_color": "#2B2B2B",
+    "background_color": "#22356D",
     "theme_color": "#22356D",
     "orientation": "portrait",
     "display": "standalone",
