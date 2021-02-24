@@ -21,7 +21,7 @@ textosESP = [
 "FeedBack",
 "Si tienes alguna sugerencia o comentario sobre la APP, o notas algún error en los datos, traducción o cualquier otro, puedes ponerte en contacto a través de Whatsapp y te estaremos respondiendo a la brevedad.",
 "Contacto por Whatsapp",
-"En esta sección se irán actualizando las últimas noticias y anuncios del Torneo.",
+"Activar las notificaciones.",
 "Incriptos",
 "Grupo A",
 "Ranking",
@@ -96,7 +96,8 @@ textosESP = [
 "Octavos",
 "Cuartos",
 "Semifinal",
-"Final"
+"Final",
+'Activar'
 ];
 
 // Txt ENGLISH
@@ -107,12 +108,12 @@ textosENG = [
 "Information",
 "General",
 "News",
-"Objetive",
+"Objective",
 "The VIII Padel Tournament of the Center Esportiu Nova Icària aims to encourage participation among club members and sports practice. The organization is carried out by the participants themselves.",
 "Competition rules",
 "Registration is 20 euros per couple (10 each participant) that will go to prizes, in its entirety. The deadline to pay the registration is February 15, 2021, inclusive.",
 "Tournament format",
-"Two independent groups (A and B) are established based on the ranking of previous tournaments. In each group there are 4 subgroups (A1, A2, A3 and A4) that face each other in league mode, all against all. The first 4 of each group go to the knockout phase. The matches are organized by the couples that face each other, at a time and place to be agreed by them, respecting the established deadlines. The order of play is indifferent. It is recommended to open WhatsApp groups to coordinate the leagues.",
+"Two independent groups (A and B) are established based on the ranking of previous tournaments. In each group there are 4 subgroups (A1, A2, A3 and A4) that face each other in league mode, in round robin format. The first 4 of each group go to the knockout phase. The matches are organized by the couples that face each other, at a time and place to be agreed by them, respecting the established deadlines. The order of play is indifferent. It is recommended to open WhatsApp groups to coordinate the leagues.",
 "Dates",
 "LEAGUE PHASE until May 2, 2021. <br /> ELIMINATION PHASE until June 30, 2021.",
 "Awards",
@@ -122,7 +123,7 @@ textosENG = [
 "Feedback",
 "If you have any suggestions or comments about the APP, or you notice any error in the data, translation or any other, you can get in touch through WhatsApp and we will be answering you as soon as possible.",
 "Contact by Whatsapp",
-"In this section the latest news and announcements of the Tournament will be updated.",
+"Activate notifications.",
 "Enrolled",
 "Group A",
 "Ranking",
@@ -197,7 +198,8 @@ textosENG = [
 "Round of 16",
 "Quarter finals",
 "Semifinal",
-"Final"
+"Final",
+"Activate"
 ];
 
 // Txt CATALÀ
@@ -209,22 +211,22 @@ textosCAT = [
 "General",
 "Notícies",
 "Objectiu",
-"El VIII Torneig de Pàdel de l'Centre Esportiu Nova Icària té com a objectiu fomentar la participació entre els socis de el club i la pràctica esportiva. L'organització és realitzada pels mateixos participants.",
+"El VIII Torneig de Pàdel del Centre Esportiu Nova Icària té com a objectiu fomentar la participació entre els socis de el club i la pràctica esportiva. L'organització és realitzada pels mateixos participants.",
 "Normes de la competició",
-"La inscripció és de 20 euros per parella (10 cada participant) que es destinaran a premis, íntegrament. El termini per abonar la inscripció és el 15 de febrer de 2021, inclusivament.",
+"La inscripció és de 20 euros per parella (10 cada participant) que es destinaran a premis, íntegrament. El termini per abonar la inscripció acaba el dia 15 de febrer de 2021.",
 "Format de el torneig",
-"S'estableixen dos grups independents (A i B) sobre la base de la classificació de tornejos anteriors. A cada grup hi ha 4 subgrups (A1, A2, A3 i A4) que s'enfronten en mode lliga, de tots contra tots. Els 4 primers de cada grup passen a fase eliminatòria. Els partits els organitzen les parelles que s'enfronten, en horari i lloc a convenir per ells, respentando els terminis previstos. L'ordre de joc és indiferent. Es recomana obrir grups de whatsapp per coordinar les lliguetes.",
+"S'estableixen dos grups independents (A i B) sobre la base de la classificació de tornejos anteriors. A cada grup hi ha 4 subgrups (A1, A2, A3 i A4) que s'enfronten en mode lliga, de tots contra tots. Els 4 primers de cada grup passen a fase eliminatòria. Els partits els organitzen les parelles que s'hi enfronten, en horari i lloc a convenir per ells, respectant les dates previstes. L'ordre de joc és indiferent. Es recomana obrir grups de whatsapp per a coordinar les lliguetes.",
 "Dates",
-"FASE LLIGA fins a 2 de maig de 2021. <br /> FASE ELIMINATÒRIA fins a 30 de juny de 2021.",
+"FASE LLIGA fins el dia 2 de maig de 2021. <br /> FASE ELIMINATÒRIA fins el 30 de juny de 2021.",
 "Premis",
 "Guanyador i Finalista, i sorteig per a tots els que hagin jugat tots els partits.",
 "APP",
 "En aquesta aplicació podrà trobar informació actualitzada dels resultats i estadístiques de tots els partits.",
 "Feedback",
-"Si tens algun suggeriment o comentari sobre l'APP, o notes algun error en les dades, traducció o qualsevol altre, pots posar-te en contacte a través de Whatsapp i et estarem responent a la brevetat.",
+"Si tens algun suggeriment o comentari sobre l'APP, o notes algun error en les dades, traducció o qualsevol altre, pots posar-te en contacte a través de Whatsapp i mirarem de respondre el més aviat possible.",
 "Contacte per Whatsapp",
-"En aquesta secció s'aniran actualitzant les últimes notícies i anuncis de l'Torneig.",
-"Incriptos",
+"Activa les notificacions.",
+"Participants",
 "Grup A",
 "Rànquing",
 "Jugador",
@@ -298,7 +300,8 @@ textosCAT = [
 "Vuitens",
 "Quarts",
 "Semifinal",
-"Final"
+"Final",
+"Activar"
 ];
 
 /* Variables a traducir */
@@ -398,6 +401,7 @@ let trad93 = document.getElementById("defaultOpen6");
 let trad94 = document.getElementById("but-pest-05");
 let trad95 = document.getElementById("but-pest-06");
 let trad96 = document.getElementById("but-pest-07");
+let trad97 = document.getElementById("but-notif");
 
 // let trad97 = document.getElementById("");
 // let trad98 = document.getElementById("");
@@ -511,5 +515,6 @@ textosID = [
     trad93,
     trad94,
     trad95,
-    trad96
+    trad96,
+    trad97
 ];

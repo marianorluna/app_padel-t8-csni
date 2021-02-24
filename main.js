@@ -329,6 +329,30 @@ function ingresar() {
     div.style.display = 'none';
 }
 
+// Permisos para notificaciones
+var button = document.getElementById("but-notif");
+button.addEventListener('click', function(e) {
+    Notification.requestPermission().then(function(result) {
+        if(result === 'granted') {
+            actualNotification();
+        }
+    });
+});
+
+// Notificaciones
+var notif;
+function actualNotification() {
+    var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
+    var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
+    var notifImg = './img/icon_64.png';
+    var options = {
+        body: notifBody,
+        icon: notifImg
+    }
+    notif = new Notification(notifTitle, options);
+    //setTimeout(actualNotification, 30000);
+}
+
 //window.addEventListener("load", tradESP());
 //console.log(typeof(datosPlayers));
 // console.log(jugadores.length + " jugadores inscriptos");
