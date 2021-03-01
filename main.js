@@ -5,6 +5,33 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.warn('Error al tratar de registrar el sw', err))
 }
 
+// Permisos para notificaciones
+var button = document.getElementById("but-notif");
+button.addEventListener('click', function(e) {
+    Notification.requestPermission().then(function(result) {
+        if(result === 'granted') {
+            actualNotification();
+        }
+    });
+});
+
+// Notificaciones
+var notif;
+function actualNotification() {
+    var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
+    var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
+    var notifImg = './img/icon_64.png';
+    var options = {
+        body: notifBody,
+        icon: notifImg
+    }
+    notif = new Notification(notifTitle, options);
+    //setTimeout(actualNotification, 30000);
+};
+
+// ***********************************************
+// ***********************************************
+
 // PESTAÑAS
 // Pestañas de Estadísticas: Grupos, Resultados y Posiciones
 
@@ -163,30 +190,6 @@ window.addEventListener('click', e =>{
 function ingresar() {
     div = document.getElementById('front-index');
     div.style.display = 'none';
-};
-
-// Permisos para notificaciones
-var button = document.getElementById("but-notif");
-button.addEventListener('click', function(e) {
-    Notification.requestPermission().then(function(result) {
-        if(result === 'granted') {
-            actualNotification();
-        }
-    });
-});
-
-// Notificaciones
-var notif;
-function actualNotification() {
-    var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
-    var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
-    var notifImg = './img/icon_64.png';
-    var options = {
-        body: notifBody,
-        icon: notifImg
-    }
-    notif = new Notification(notifTitle, options);
-    //setTimeout(actualNotification, 30000);
 };
 
 

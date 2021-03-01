@@ -22,7 +22,7 @@ textosESP = [
 "Si tienes alguna sugerencia o comentario sobre la APP, o notas algún error en los datos, traducción o cualquier otro, puedes ponerte en contacto a través de Whatsapp y te estaremos respondiendo a la brevedad.",
 "Contacto por Whatsapp",
 "Activar las notificaciones.",
-"Incriptos",
+"Inscriptos",
 "Grupo A",
 "Ranking",
 "Jugador",
@@ -87,9 +87,9 @@ textosESP = [
 "<span>PJ =</span> Partidos jugados",
 "<span>PG =</span> Partidos ganados",
 "<span>PP =</span> Partidos perdidos",
-"<span>SF =</span> Cantidad de sets ganados",
-"<span>SC =</span> Cantidad de sets perdidos",
-"<span>DS =</span> Diferencia a favor o en contra de los sets ganados y perdidos",
+"<span>SF =</span> Cantidad de juegos ganados",
+"<span>SC =</span> Cantidad de juegos perdidos",
+"<span>DS =</span> Diferencia a favor o en contra de los juegos ganados y perdidos",
 "Cuadros",
 "Grupo A",
 "Grupo B",
@@ -102,7 +102,7 @@ textosESP = [
 "<span>1. PG - </span> Partidos ganados",
 "<span>2. PP - </span> Partidos perdidos",
 "<span>3. PJ - </span> Partidos jugados",
-"<span>4. DS - </span> Diferencia de sets",
+"<span>4. DJ - </span> Diferencia de juegos",
 "<span>5. RE - </span> Resultado entre ambos"
 ];
 
@@ -195,9 +195,9 @@ textosENG = [
 "<span> PJ = </span> Games played",
 "<span> PG = </span> Matches won",
 "<span> PP = </span> Lost matches",
-"<span> SF = </span> Number of sets won",
-"<span> SC = </span> Number of lost sets",
-"<span> DS = </span> Difference in favor or against the sets won and lost",
+"<span> JF = </span> Number of won games",
+"<span> JC = </span> Number of lost games",
+"<span> DJ = </span> Difference in favor or against the games won and lost",
 "League",
 "A Group",
 "B Group",
@@ -210,7 +210,7 @@ textosENG = [
 "<span> 1. PG - </span> Matches won",
 "<span> 2. PP - </span> Lost matches",
 "<span> 3. PJ - </span> Games played",
-"<span> 4. DS - </span> Difference of sets",
+"<span> 4. DJ - </span> Difference of games",
 "<span> 5. RE - </span> Result between both"
 ];
 
@@ -303,9 +303,9 @@ textosCAT = [
 "<span> PJ = </span> Partits jugats",
 "<span> PG = </span> Partits guanyats",
 "<span> PP = </span> Partits perduts",
-"<span> SF = </span> Quantitat de sets guanyats",
-"<span> SC = </span> Quantitat de sets perduts",
-"<span> DS = </span> Diferència a favor o en contra dels sets guanyats i perduts",
+"<span> JF = </span> Quantitat de jocs guanyats",
+"<span> JC = </span> Quantitat de jocs perduts",
+"<span> DJ = </span> Diferència a favor o en contra dels jocs guanyats i perduts",
 "Lliga",
 "Grup A",
 "Grup B",
@@ -318,7 +318,7 @@ textosCAT = [
 "<span> 1. PG - </span> Partits guanyats",
 "<span> 2. PP - </span> Partits perduts",
 "<span> 3. PJ - </span> Partits jugats",
-"<span> 4. DS - </span> Diferència de sets",
+"<span> 4. DJ - </span> Diferència de jocs",
 "<span> 5. RE - </span> Resultat entre tots dos"
 ];
 
