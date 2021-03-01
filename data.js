@@ -14,7 +14,7 @@ class Jugador
 {
     constructor(id, n, a, k, j, l)
     {
-        this.id_j = id
+        this.id_j = id;
         this.nom_j = n;
         this.ape_j = a;
         this.rank_j = k;
@@ -25,13 +25,43 @@ class Jugador
     }
 }
 
+class Grupo
+{
+    constructor(id, par)
+    {
+        this.id_g = id;
+        this.par_g = par;
+    }
+}
+
 class Pareja
 {
-    constructor(j1, j2)
+    constructor(id, j1, j2)
     {
-        //this.id_p = id;
+        this.id_p = id;
         this.j1_p = j1;
         this.j2_p = j2;
+    }
+}
+
+class Game
+{
+    constructor(id, t1, t2)
+    {
+        this.id_pj = id;
+        this.team1 = t1;
+        this.team2 = t2;
+    }
+}
+
+class GameTeam
+{
+    constructor(id, s1, s2, s3)
+    {
+        this.id_t = id; 
+        this.sets_t = [s1, s2, s3];
+        this.swin_t = 0;
+        this.win_t = false;
     }
 }
 

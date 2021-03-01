@@ -97,7 +97,13 @@ textosESP = [
 "Cuartos",
 "Semifinal",
 "Final",
-'Activar'
+"Activar",
+"<span>Criterios para definir las posiciones</span>",
+"<span>1. PG - </span> Partidos ganados",
+"<span>2. PP - </span> Partidos perdidos",
+"<span>3. PJ - </span> Partidos jugados",
+"<span>4. DS - </span> Diferencia de sets",
+"<span>5. RE - </span> Resultado entre ambos"
 ];
 
 // Txt ENGLISH
@@ -199,7 +205,13 @@ textosENG = [
 "Quarter finals",
 "Semifinal",
 "Final",
-"Activate"
+"Activate",
+"<span> Criteria to define the positions </span>",
+"<span> 1. PG - </span> Matches won",
+"<span> 2. PP - </span> Lost matches",
+"<span> 3. PJ - </span> Games played",
+"<span> 4. DS - </span> Difference of sets",
+"<span> 5. RE - </span> Result between both"
 ];
 
 // Txt CATALÀ
@@ -285,15 +297,15 @@ textosCAT = [
 "Posicions G-B2",
 "Posicions G-B3",
 "Posicions G-B4",
-"<span> G = </ span> Grup",
-"<span> N ° = </ span> Posició en el grup",
-"<span> ID = </ span> Identificador de la parella",
-"<span> PJ = </ span> Partits jugats",
-"<span> PG = </ span> Partits guanyats",
-"<span> PP = </ span> Partits perduts",
-"<span> SF = </ span> Quantitat de sets guanyats",
-"<span> SC = </ span> Quantitat de sets perduts",
-"<span> DS = </ span> Diferència a favor o en contra dels sets guanyats i perduts",
+"<span> G = </span> Grup",
+"<span> N ° = </span> Posició en el grup",
+"<span> ID = </span> Identificador de la parella",
+"<span> PJ = </span> Partits jugats",
+"<span> PG = </span> Partits guanyats",
+"<span> PP = </span> Partits perduts",
+"<span> SF = </span> Quantitat de sets guanyats",
+"<span> SC = </span> Quantitat de sets perduts",
+"<span> DS = </span> Diferència a favor o en contra dels sets guanyats i perduts",
 "Lliga",
 "Grup A",
 "Grup B",
@@ -301,7 +313,13 @@ textosCAT = [
 "Quarts",
 "Semifinal",
 "Final",
-"Activar"
+"Activar",
+"<span> Criteris per definir les posicions </span>",
+"<span> 1. PG - </span> Partits guanyats",
+"<span> 2. PP - </span> Partits perduts",
+"<span> 3. PJ - </span> Partits jugats",
+"<span> 4. DS - </span> Diferència de sets",
+"<span> 5. RE - </span> Resultat entre tots dos"
 ];
 
 /* Variables a traducir */
@@ -402,14 +420,13 @@ let trad94 = document.getElementById("but-pest-05");
 let trad95 = document.getElementById("but-pest-06");
 let trad96 = document.getElementById("but-pest-07");
 let trad97 = document.getElementById("but-notif");
+let trad98 = document.getElementById("par-19");
+let trad99 = document.getElementById("par-20");
+let trad100 = document.getElementById("par-21");
+let trad101 = document.getElementById("par-22");
+let trad102 = document.getElementById("par-23");
+let trad103 = document.getElementById("par-24");
 
-// let trad97 = document.getElementById("");
-// let trad98 = document.getElementById("");
-// let trad99 = document.getElementById("");
-// let trad100 = document.getElementById("");
-// let trad101 = document.getElementById("");
-// let trad102 = document.getElementById("");
-// let trad103 = document.getElementById("");
 // let trad104 = document.getElementById("");
 // let trad105 = document.getElementById("");
 // let trad106 = document.getElementById("");
@@ -516,5 +533,11 @@ textosID = [
     trad94,
     trad95,
     trad96,
-    trad97
+    trad97,
+    trad98,
+    trad99,
+    trad100,
+    trad101,
+    trad102,
+    trad103
 ];
