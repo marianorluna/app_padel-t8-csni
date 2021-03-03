@@ -203,20 +203,36 @@ for(let i = 0; i<dataJugadores.length; i++) {
             dataJugadores[i].id_j, dataJugadores[i].nom_j, dataJugadores[i].ape_j, dataJugadores[i].rank_j, dataJugadores[i].punt_j, dataJugadores[i].nivel_j)
     )
 };
+
+// Funciones de Fixtures
 let jugadoresRanking = new Array();
 let parejasJugRankA = new Array();
 let parejasJugRankB = new Array();
-let idParejas = new Array();
+let idParejasA = new Array();
 for(let i = 1; i<41; i++) {
     if(i<10) {
-        idParejas.push("P0" + i);
+        idParejasA.push("A0" + i);
     }
     else if(i>=10) {
-        idParejas.push("P" + i);
+        idParejasA.push("A" + i);
     }
 };
+let idParejasB = new Array();
+for(let i = 1; i<41; i++) {
+    if(i<10) {
+        idParejasB.push("B0" + i);
+    }
+    else if(i>=10) {
+        idParejasB.push("B" + i);
+    }
+};
+let leagues = ["A","B"];
+let groups = [1,2,3,4];
+let groupSubA = new Array();
+let groupSubB = new Array();
+let groupA = new Array();
+let groupB = new Array();
 
-// Funciones de Fixtures
 function ordenarJugRank() {
     jugadoresRanking = jugadores;
     jugadoresRanking.sort(function compareNumbers(a,b) {
@@ -263,7 +279,7 @@ function parejasRankingA() {
             )
         }
     for(let j = 0; j<parejasJugRankA.length; j++) {
-        parejasJugRankA[j].id_p = idParejas[j];
+        parejasJugRankA[j].id_p = idParejasA[j];
     }
     };
     return parejasJugRankA;
@@ -301,16 +317,11 @@ function parejasRankingB() {
             )
         }
     for(let j = 0; j<parejasJugRankB.length; j++) {
-        parejasJugRankB[j].id_p = idParejas[j];
+        parejasJugRankB[j].id_p = idParejasB[j];
     }
     };
     return parejasJugRankB;
 };
-
-let leagues = ["A","B"];
-let groups = [1,2,3,4];
-let groupSubA = new Array();
-let groupSubB = new Array();
 
 function groupLeaguesA() {
     for(let g=0; g<groups.length; g++) {
@@ -325,12 +336,13 @@ function groupLeaguesB() {
     return groupSubB;
 };
 
-let groupA = new Array();
-let groupB = new Array();
+// IMPORTANTE PARA LOS CÁLCULOS, DESPUÉS SE DEBE GENERAR UN EVENTO INICIAL DE WINDOWS!!!
+console.log( groupLeaguesA() );     //carga variable: groupSubA
+console.log( groupLeaguesB() );     //carga variable: groupSubB
+console.log( parejasRankingA() );   //carga variable: parejasJugRankA
+console.log( parejasRankingB() );   //carga variable: parejasJugRankB
 
 function parejasGrupoA() {
-    groupLeaguesA();    //carga variable: groupSubA
-    parejasRankingA();  //carga variable: parejasJugRankA
     if(groupSubA.length > 0) {
         for(let sg = 0; sg < groupSubA.length; sg++) {
             groupA.push( new Grupo(groupSubA[sg], new Array()) );
@@ -360,8 +372,6 @@ function parejasGrupoA() {
 };
 
 function parejasGrupoB() {
-    groupLeaguesB();    //carga variable: groupSubB
-    parejasRankingB();  //carga variable: parejasJugRankB
     if(groupSubB.length > 0) {
         for(let sg = 0; sg < groupSubB.length; sg++) {
             groupB.push( new Grupo(groupSubB[sg], new Array()) );
@@ -390,7 +400,50 @@ function parejasGrupoB() {
     return groupB;
 };
 
+// IMPORTANTE PARA LOS CÁLCULOS, DESPUÉS SE DEBE GENERAR UN EVENTO INICIAL DE WINDOWS!!!
+console.log( parejasGrupoA() );
+console.log( parejasGrupoB() );
+
 // Programación de partidos
+
+// Partido jugado
+let gamePru1 = new Game("P1", new GameTeam("P08", 6, 7, 0), new GameTeam("P12", 7, 9, 0));
+let gameDef = new Game("P0", new GameTeam("P00", 0, 0, 0), new GameTeam("P00", 0, 0, 0));
+
+function gameJ(eG = gameDef) {
+    let game = eG;
+    if(game.team1.sets_t[0] != 0 || game.team2.sets_t[0] != 0) {
+        for(let i = 0; i < 3; i++) {
+            if(game.team1.sets_t[i] > game.team2.sets_t[i]) {
+                game.team1.swin_t += 1;
+            }
+            else if(game.team1.sets_t[i] < game.team2.sets_t[i]) {
+                game.team2.swin_t += 1;
+            }
+            else {
+                console.log("UN SET SIN DEFINIR");
+            }
+        }
+    }
+    else {
+        console.log("FALTAN INGRESAR DATOS");
+    }
+    if(game.team1.swin_t == 2) {
+        game.team1.win_t = true;
+        console.log("GANÓ TEAM " + game.team1.id_t);
+    }
+    else if(game.team2.swin_t == 2) {
+        game.team2.win_t = true;
+        console.log("GANÓ TEAM " + game.team2.id_t);
+    }
+    else {
+        console.log("NO SE HA JUGADO AÚN");
+    }
+    return "RESULTADO: " + game.team1.sets_t[0]+"/"+game.team2.sets_t[0]+" "+game.team1.sets_t[1]+"/"+game.team2.sets_t[1]+" "+game.team1.sets_t[2]+"/"+game.team2.sets_t[2];
+};
+
+console.log( gameJ(  ));
+
 // Partidos grupos
 let gamesA1 = new Array();
 let gamesA2 = new Array();
@@ -400,9 +453,6 @@ let gamesB1 = new Array();
 let gamesB2 = new Array();
 let gamesB3 = new Array();
 let gamesB4 = new Array();
-// IMPORTANTE PARA LOS CÁLCULOS, DESPUÉS SE DEBE GENERAR UN EVENTO INICIAL DE WINDOWS!!!
-console.log( parejasGrupoA() );
-console.log( parejasGrupoB() );
 
 function gameSubA1() {
     if(groupA[0].par_g.length != 0) {
@@ -419,6 +469,23 @@ function gameSubA1() {
     }
     return gamesA1;
 };
+
+// function gameSubA1() {
+//     if(groupA[0].par_g.length != 0) {
+//         for(let i = 0; i < groupA[0].par_g.length; i++) {
+//             for(let j = 0; j < groupA[0].par_g.length; j++) {
+//                 if(groupA[0].par_g[i].id_p != groupA[0].par_g[j].id_p && groupA[0].par_g[i].id_p < groupA[0].par_g[j].id_p) {
+//                     gamesA1.push(new Game("", new GameTeam( groupA[0].par_g[i].id_p, 0, 0, 0 ),  new GameTeam( groupA[0].par_g[j].id_p, 0, 0, 0 ) ) );
+//                 }
+//             }
+//         }
+//     }
+//     for(let i = 0; i < gamesA1.length; i++) {
+//         gamesA1[i].id_pj = "P" + (i+1);
+//     }
+//     return gamesA1;
+// };
+
 function gameSubA2() {
     if(groupA[1].par_g.length != 0) {
         for(let i = 0; i < groupA[1].par_g.length; i++) {
@@ -525,46 +592,9 @@ function gameSubB4() {
     return gamesB4;
 };
 
-console.log( gameSubB4() );
+console.log( gameSubA1() );
 
-// Resultados de partidos por sub grupos
-
-// Partido jugado
-let gamePru1 = new Game("P1", new GameTeam("P08", 6, 7, 0), new GameTeam("P12", 7, 9, 0));
-let gameDef = new Game("P0", new GameTeam("P00", 0, 0, 0), new GameTeam("P00", 0, 0, 0));
-
-function gameJ(eG = gameDef) {
-    let game = eG;
-    if(game.team1.sets_t[0] != 0 || game.team2.sets_t[0] != 0) {
-        for(let i = 0; i < 3; i++) {
-            if(game.team1.sets_t[i] > game.team2.sets_t[i]) {
-                game.team1.swin_t += 1;
-            }
-            else if(game.team1.sets_t[i] < game.team2.sets_t[i]) {
-                game.team2.swin_t += 1;
-            }
-            else {
-                console.log("UN SET SIN DEFINIR");
-            }
-        }
-    }
-    else {
-        console.log("FALTAN INGRESAR DATOS");
-    }
-    if(game.team1.swin_t == 2) {
-        game.team1.win_t = true;
-        console.log("GANÓ TEAM " + game.team1.id_t);
-    }
-    else if(game.team2.swin_t == 2) {
-        game.team2.win_t = true;
-        console.log("GANÓ TEAM " + game.team2.id_t);
-    }
-    else {
-        console.log("NO SE HA JUGADO AÚN");
-    }
-    return "RESULTADO: " + game.team1.sets_t[0]+"/"+game.team2.sets_t[0]+" "+game.team1.sets_t[1]+"/"+game.team2.sets_t[1]+" "+game.team1.sets_t[2]+"/"+game.team2.sets_t[2];
-};
-console.log( gameJ(  ));
+// Puntaje para ranking ELO
 
 let puntos = [
     {pj: 5},
@@ -579,8 +609,78 @@ let puntos = [
     {fin_g: 500}
 ];
 
-// Posiciones
+// Tablas de Posiciones
+let tablePosA1 = new Array(6);
+let tablePosA2 = new Array(6);
+let tablePosA3 = new Array(5);
+let tablePosA4 = new Array(5);
+let tablePosB1 = new Array(6);
+let tablePosB2 = new Array(6);
+let tablePosB3 = new Array(6);
+let tablePosB4 = new Array(6);
 
+tablePosA1 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosA2 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosA3 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosA4 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosB1 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosB2 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosB3 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+tablePosB4 = [
+    new Position(1, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(2, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(3, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(4, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(5, "G00", 0, 0, 0, 0, 0, 0), 
+    new Position(6, "G00", 0, 0, 0, 0, 0, 0)];
+
+function datosPorGrupo() {
+
+}
+
+console.log(tablePosA1);
+console.log(tablePosA2[3].ord_po);
+console.log( datosPorGrupo() );
 
 // *********************************************
 // *********************************************

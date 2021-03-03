@@ -23,7 +23,7 @@ class Jugador
         // this.imagen = new Image();
         // this.imagen.src = imagenes[this.id_j]
     }
-}
+};
 
 class Grupo
 {
@@ -32,7 +32,7 @@ class Grupo
         this.id_g = id;
         this.par_g = par;
     }
-}
+};
 
 class Pareja
 {
@@ -42,7 +42,7 @@ class Pareja
         this.j1_p = j1;
         this.j2_p = j2;
     }
-}
+};
 
 class Game
 {
@@ -52,7 +52,7 @@ class Game
         this.team1 = t1;
         this.team2 = t2;
     }
-}
+};
 
 class GameTeam
 {
@@ -63,7 +63,22 @@ class GameTeam
         this.swin_t = 0;
         this.win_t = false;
     }
-}
+};
+
+class Position
+{
+    constructor(ord, id, pj, pg, pp, jf, jc, dj)
+    {
+        this.ord_po = ord;
+        this.id_po = id;
+        this.pj_po = pj;
+        this.pg_po = pg;
+        this.pp_po = pp;
+        this.jf_po = jf;
+        this.jc_po = jc;
+        this.dj_po = dj;
+    }
+};
 
 
 let dataJugadores = [
