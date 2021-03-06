@@ -1,7 +1,7 @@
 // Txt ESPAÑOL
 let textosESP = [];
 textosESP = [
-"VIII Torneo Padel CSNI",
+"VIII Torneo Padel <span>CSNI</span>",
 "Fecha limite - Fase de Liga hasta 02/05/2021",
 "Informacion",
 "General",
@@ -83,13 +83,13 @@ textosESP = [
 "Posiciones G-B4",
 "<span>G =</span> Grupo",
 "<span>N° =</span> Posición en el grupo",
-"<span>ID =</span> Identificador de la pareja",
+"<span>TEAM =</span> Pareja",
 "<span>PJ =</span> Partidos jugados",
 "<span>PG =</span> Partidos ganados",
 "<span>PP =</span> Partidos perdidos",
-"<span>SF =</span> Cantidad de juegos ganados",
-"<span>SC =</span> Cantidad de juegos perdidos",
-"<span>DS =</span> Diferencia a favor o en contra de los juegos ganados y perdidos",
+"<span>SG =</span> Cantidad de sets ganados",
+"<span>DS =</span> Diferencia a favor o en contra de los sets ganados y perdidos",
+"<span>DG =</span> Diferencia a favor o en contra de los juegos ganados y perdidos",
 "Cuadros",
 "Grupo A",
 "Grupo B",
@@ -99,17 +99,17 @@ textosESP = [
 "Final",
 "Activar",
 "<span>Criterios para definir las posiciones</span>",
-"<span>1. PG - </span> Partidos ganados",
-"<span>2. PP - </span> Partidos perdidos",
-"<span>3. PJ - </span> Partidos jugados",
-"<span>4. DJ - </span> Diferencia de juegos",
+"<span>1. PJ - </span> Partidos jugados",
+"<span>2. PG - </span> Partidos ganados",
+"<span>3. DS - </span> Diferencia de sets",
+"<span>4. DG - </span> Diferencia de juegos",
 "<span>5. RE - </span> Resultado entre ambos"
 ];
 
 // Txt ENGLISH
 let textosENG = [];
 textosENG = [
-"VIII Padel Tournament",
+"<span>VIII </span>Padel Tournament",
 "Deadline - League Phase until 02/05/2021",
 "Information",
 "General",
@@ -191,13 +191,13 @@ textosENG = [
 "G-B4 positions",
 "<span> G = </span> Group",
 "<span> N ° = </span> Position in the group",
-"<span> ID = </span> Identifier of the pair",
+"<span> TEAM = </span> Team",
 "<span> PJ = </span> Games played",
 "<span> PG = </span> Matches won",
 "<span> PP = </span> Lost matches",
-"<span> JF = </span> Number of won games",
-"<span> JC = </span> Number of lost games",
-"<span> DJ = </span> Difference in favor or against the games won and lost",
+"<span> SG = </span> Number of won sets",
+"<span> DS = </span> Difference in favor or against the sets won and lost",
+"<span> DG = </span> Difference in favor or against the games won and lost",
 "League",
 "A Group",
 "B Group",
@@ -207,17 +207,17 @@ textosENG = [
 "Final",
 "Activate",
 "<span> Criteria to define the positions </span>",
-"<span> 1. PG - </span> Matches won",
-"<span> 2. PP - </span> Lost matches",
-"<span> 3. PJ - </span> Games played",
-"<span> 4. DJ - </span> Difference of games",
+"<span> 1. PJ - </span> Games played",
+"<span> 2. PG - </span> Matches won",
+"<span> 3. DS - </span> Difference of sets",
+"<span> 4. DG - </span> Difference of games",
 "<span> 5. RE - </span> Result between both"
 ];
 
 // Txt CATALÀ
 let textosCAT = [];
 textosCAT = [
-"VIII Torneig Pàdel CSNI",
+"VIII Torneig Pàdel <span>CSNI</span>",
 "Data limiti - Fase de Lliga fins 2021.05.02",
 "Informació",
 "General",
@@ -299,13 +299,13 @@ textosCAT = [
 "Posicions G-B4",
 "<span> G = </span> Grup",
 "<span> N ° = </span> Posició en el grup",
-"<span> ID = </span> Identificador de la parella",
+"<span> TEAM = </span> Parella",
 "<span> PJ = </span> Partits jugats",
 "<span> PG = </span> Partits guanyats",
 "<span> PP = </span> Partits perduts",
-"<span> JF = </span> Quantitat de jocs guanyats",
-"<span> JC = </span> Quantitat de jocs perduts",
-"<span> DJ = </span> Diferència a favor o en contra dels jocs guanyats i perduts",
+"<span> SG = </span> Quantitat de sets guanyats",
+"<span> DS = </span> Diferència a favor o en contra dels sets guanyats i perduts",
+"<span> DG = </span> Diferència a favor o en contra dels jocs guanyats i perduts",
 "Lliga",
 "Grup A",
 "Grup B",
@@ -315,10 +315,10 @@ textosCAT = [
 "Final",
 "Activar",
 "<span> Criteris per definir les posicions </span>",
-"<span> 1. PG - </span> Partits guanyats",
-"<span> 2. PP - </span> Partits perduts",
-"<span> 3. PJ - </span> Partits jugats",
-"<span> 4. DJ - </span> Diferència de jocs",
+"<span> 1. PJ - </span> Partits jugats",
+"<span> 2. PG - </span> Partits guanyats",
+"<span> 3. DS - </span> Diferència de sets",
+"<span> 4. DG - </span> Diferència de jocs",
 "<span> 5. RE - </span> Resultat entre tots dos"
 ];
 

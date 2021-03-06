@@ -20,8 +20,21 @@ class Jugador
         this.rank_j = k;
         this.punt_j = j;
         this.nivel_j = l;
+        this.elo_j = 0;
         // this.imagen = new Image();
         // this.imagen.src = imagenes[this.id_j]
+    }
+};
+
+class Pareja
+{
+    constructor(id, j1, j2)
+    {
+        this.id_p = id;
+        this.j1_p = j1;
+        this.j2_p = j2;
+        this.punt_p = 0;
+        this.elo_p = 0;
     }
 };
 
@@ -34,16 +47,6 @@ class Grupo
     }
 };
 
-class Pareja
-{
-    constructor(id, j1, j2)
-    {
-        this.id_p = id;
-        this.j1_p = j1;
-        this.j2_p = j2;
-    }
-};
-
 class Game
 {
     constructor(id, t1, t2)
@@ -51,6 +54,7 @@ class Game
         this.id_pj = id;
         this.team1 = t1;
         this.team2 = t2;
+        this.play = false;
     }
 };
 
@@ -61,26 +65,33 @@ class GameTeam
         this.id_t = id; 
         this.sets_t = [s1, s2, s3];
         this.swin_t = 0;
+        this.gwin_t = 0;
         this.win_t = false;
     }
 };
 
 class Position
 {
-    constructor(ord, id, pj, pg, pp, jf, jc, dj)
+    constructor(ord)
     {
         this.ord_po = ord;
-        this.id_po = id;
-        this.pj_po = pj;
-        this.pg_po = pg;
-        this.pp_po = pp;
-        this.jf_po = jf;
-        this.jc_po = jc;
-        this.dj_po = dj;
+        this.id_po = "";
+        this.pj_po = 0;
+        this.pg_po = 0;
+        this.pp_po = 0;
+        this.sf_po = 0;
+        this.sc_po = 0;
+        this.ds_po = 0;
+        this.gf_po = 0;
+        this.gc_po = 0;
+        this.dg_po = 0;
+        this.pts_po = 0;
     }
 };
 
-
+//****************************
+//****************************
+//Datos de todos los jugadores
 let dataJugadores = [
     {   
         id_j: "ic001",
@@ -157,7 +168,7 @@ let dataJugadores = [
     {
         id_j: "ic010",
         nom_j: "Antonio",
-        ape_j: "Fernández",
+        ape_j: "F.",
         rank_j: 68,
         punt_j: 0,
         nivel_j: "B"
@@ -173,7 +184,7 @@ let dataJugadores = [
     {
         id_j: "ic012",
         nom_j: "David",
-        ape_j: "Caballero",
+        ape_j: "C.",
         rank_j: 1,
         punt_j: 0,
         nivel_j: "A"
@@ -205,7 +216,7 @@ let dataJugadores = [
     {
         id_j: "ic016",
         nom_j: "David",
-        ape_j: "Sánchez",
+        ape_j: "S.",
         rank_j: 16,
         punt_j: 0,
         nivel_j: "A"
@@ -229,7 +240,7 @@ let dataJugadores = [
     {
         id_j: "ic019",
         nom_j: "Eduard",
-        ape_j: "Peris",
+        ape_j: "P.",
         rank_j: 21,
         punt_j: 0,
         nivel_j: "A"
@@ -333,7 +344,7 @@ let dataJugadores = [
     {
         id_j: "ic032",
         nom_j: "Iván",
-        ape_j: "Monedero",
+        ape_j: "M.",
         rank_j: 37,
         punt_j: 0,
         nivel_j: "A"
@@ -349,7 +360,7 @@ let dataJugadores = [
     {
         id_j: "ic034",
         nom_j: "Jaime",
-        ape_j: "Cuesta",
+        ape_j: "C.",
         rank_j: 40,
         punt_j: 0,
         nivel_j: "A"
@@ -365,7 +376,7 @@ let dataJugadores = [
     {
         id_j: "ic036",
         nom_j: "Jaume",
-        ape_j: "Pueyo",
+        ape_j: "P.",
         rank_j: 31,
         punt_j: 0,
         nivel_j: "A"
@@ -380,7 +391,7 @@ let dataJugadores = [
     },
     {
         id_j: "ic038",
-        nom_j: "Jean Phillipe",
+        nom_j: "Jean P.",
         ape_j: "",
         rank_j: 32,
         punt_j: 0,
@@ -396,7 +407,7 @@ let dataJugadores = [
     },
     {
         id_j: "ic040",
-        nom_j: "Joan Francesc",
+        nom_j: "Joan F.",
         ape_j: "",
         rank_j: 57,
         punt_j: 0,
@@ -533,7 +544,7 @@ let dataJugadores = [
     {
         id_j: "ic057",
         nom_j: "Mariano",
-        ape_j: "Luna",
+        ape_j: "L.",
         rank_j: 38,
         punt_j: 0,
         nivel_j: "A"
@@ -637,7 +648,7 @@ let dataJugadores = [
     {
         id_j: "ic070",
         nom_j: "Quique",
-        ape_j: "Azcón",
+        ape_j: "A.",
         rank_j: 30,
         punt_j: 0,
         nivel_j: "A"
@@ -765,7 +776,7 @@ let dataJugadores = [
     {
         id_j: "ic086",
         nom_j: "Toni",
-        ape_j: "Monfort",
+        ape_j: "M.",
         rank_j: 10,
         punt_j: 0,
         nivel_j: "A"
@@ -805,7 +816,7 @@ let dataJugadores = [
     {
         id_j: "ic091",
         nom_j: "Víctor",
-        ape_j: "Palacio",
+        ape_j: "P.",
         rank_j: 66,
         punt_j: 0,
         nivel_j: "B"
@@ -819,3 +830,1535 @@ let dataJugadores = [
         nivel_j: "A"
     },
 ];
+//****************************
+//****************************
+
+// //Resultados Grupo A1
+let resGamesA1 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 3,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 3,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 6,
+        s1_t2: 3,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 4,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 6,
+        s1_t2: 1,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 3,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 6,
+        s1_t2: 2,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo A2
+let resGamesA2 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 4,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 3,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 2
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 6,
+        s1_t2: 3,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 4,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 7,
+        s1_t2: 5,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 6,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 7,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 6,
+        s1_t2: 1,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 1,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 6,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 1,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo A3
+let resGamesA3 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 6,
+        s1_t2: 1,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 1,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 6,
+        s1_t2: 4,
+        //Set2
+        s2_t1: 7,
+        s2_t2: 5,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 6,
+        s1_t2: 3,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo A3
+let resGamesA4 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 6,
+        s1_t2: 4,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 6,
+        s1_t2: 1,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 1,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 6,
+        s1_t2: 1,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 6,
+        s1_t2: 2,
+        //Set2
+        s2_t1: 7,
+        s2_t2: 5,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo B1
+let resGamesB1 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 2,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 2
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 1,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 5,
+        s2_t2: 7,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo B2
+let resGamesB2 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 3,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 3,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 6,
+        s1_t2: 4,
+        //Set2
+        s2_t1: 3,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 4
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 3,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 1,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 6,
+        s1_t2: 3,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 3,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo B3
+let resGamesB3 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 1,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 3,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 3,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 7,
+        s2_t2: 5,
+        //Set3
+        s3_t1: 1,
+        s3_t2: 6
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Resultados Grupo B4
+let resGamesB4 = [
+    {
+        //Partido P1
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P8
+        //Set1
+        s1_t1: 6,
+        s1_t2: 7,
+        //Set2
+        s2_t1: 7,
+        s2_t2: 5,
+        //Set3
+        s3_t1: 2,
+        s3_t2: 6
+    },
+    {
+        //Partido P9
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P10
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P11
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P12
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P13
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P14
+        //Set1
+        s1_t1: 6,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //Partido P15
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+
+//Resultados de ejemplo GA1
+// //Resultados Grupo A1
+// let resGamesA1 = [
+//     {
+//         //Partido P1
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 4,
+//         //Set2
+//         s2_t1: 5,
+//         s2_t2: 7,
+//         //Set3
+//         s3_t1: 7,
+//         s3_t2: 6
+//     },
+//     {
+//         //Partido P2
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 1,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 2,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P3
+//         //Set1
+//         s1_t1: 5,
+//         s1_t2: 7,
+//         //Set2
+//         s2_t1: 4,
+//         s2_t2: 6,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P4
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 0,
+//         //Set2
+//         s2_t1: 5,
+//         s2_t2: 7,
+//         //Set3
+//         s3_t1: 6,
+//         s3_t2: 1
+//     },
+//     {
+//         //Partido P5
+//         //Set1
+//         s1_t1: 7,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 7,
+//         s2_t2: 6,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P6
+//         //Set1
+//         s1_t1: 3,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 4,
+//         //Set3
+//         s3_t1: 7,
+//         s3_t2: 6
+//     },
+//     {
+//         //Partido P7
+//         //Set1
+//         s1_t1: 1,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 1,
+//         s2_t2: 6,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P8
+//         //Set1
+//         s1_t1: 2,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 4,
+//         //Set3
+//         s3_t1: 6,
+//         s3_t2: 4
+//     },
+//     {
+//         //Partido P9
+//         //Set1
+//         s1_t1: 3,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 5,
+//         s2_t2: 7,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P10
+//         //Set1
+//         s1_t1: 5,
+//         s1_t2: 7,
+//         //Set2
+//         s2_t1: 5,
+//         s2_t2: 7,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P11
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 3,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 4,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P12
+//         //Set1
+//         s1_t1: 7,
+//         s1_t2: 6,
+//         //Set2
+//         s2_t1: 1,
+//         s2_t2: 6,
+//         //Set3
+//         s3_t1: 7,
+//         s3_t2: 6
+//     },
+//     {
+//         //Partido P13
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 0,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 4,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     },
+//     {
+//         //Partido P14
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 0,
+//         //Set2
+//         s2_t1: 4,
+//         s2_t2: 6,
+//         //Set3
+//         s3_t1: 6,
+//         s3_t2: 7
+//     },
+//     {
+//         //Partido P15
+//         //Set1
+//         s1_t1: 6,
+//         s1_t2: 3,
+//         //Set2
+//         s2_t1: 6,
+//         s2_t2: 4,
+//         //Set3
+//         s3_t1: 0,
+//         s3_t2: 0
+//     }
+// ];

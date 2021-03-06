@@ -15,7 +15,7 @@ html, body {
 
 body {
   background-color: #ccc;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Fira Sans', sans-serif;
 }
 
@@ -214,6 +214,7 @@ body {
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s, -o-transform .2s;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  padding: 0 .5rem;
 }
 
 .front-lang:hover {
@@ -368,7 +369,7 @@ section input.ac-main ~ article.ac-small {
 
 section input.ac-main:checked ~ article.ac-small {
   height: 50vh;
-  padding: 1rem;
+  padding: 0;
 }
 
 section input.ac-main ~ article.ac-medium {
@@ -378,7 +379,7 @@ section input.ac-main ~ article.ac-medium {
 
 section input.ac-main:checked ~ article.ac-medium {
   height: 50vh;
-  padding: 1rem;
+  padding: 0;
 }
 
 section input.ac-main ~ article.ac-large {
@@ -388,7 +389,7 @@ section input.ac-main ~ article.ac-large {
 
 section input.ac-main:checked ~ article.ac-large {
   height: 50vh;
-  padding: 1rem;
+  padding: 0;
 }
 
 /* Estructura de artículos en acordeón */
@@ -461,7 +462,7 @@ article .info-div .notif-solic {
   display: grid;
   -ms-grid-rows: (1fr 1fr)[23];
       grid-template-rows: repeat(23, 1fr 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
   grid-auto-columns: 1fr 3fr;
 }
@@ -471,7 +472,7 @@ article .info-div .notif-solic {
   display: grid;
   -ms-grid-rows: (1fr 1fr)[25];
       grid-template-rows: repeat(25, 1fr 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
   grid-auto-columns: 1fr 3fr;
 }
@@ -517,9 +518,9 @@ div[id^="jTablaCampo2"] {
   display: grid;
   -ms-grid-rows: (1fr)[8];
       grid-template-rows: repeat(8, 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
-  grid-auto-columns: 1fr 1fr 3fr 3fr;
+  grid-auto-columns: 1fr 1fr 3.5fr 3.5fr;
 }
 
 .grupos5P {
@@ -527,15 +528,15 @@ div[id^="jTablaCampo2"] {
   display: grid;
   -ms-grid-rows: (1fr)[7];
       grid-template-rows: repeat(7, 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
-  grid-auto-columns: 1fr 1fr 3fr 3fr;
+  grid-auto-columns: 1fr 1fr 3.5fr 3.5fr;
 }
 
 .jug-grupo {
   background-color: #333;
   text-align: center;
-  padding: .5rem;
+  padding: .5rem 0;
   color: #fff;
 }
 
@@ -594,12 +595,12 @@ div[id^="jGrupoCampo4"] {
           align-items: center;
   padding: 1rem;
   margin-top: .5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   background-color: #ddd;
 }
 
 a .contacto-w {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: green;
   text-decoration: none;
   padding: 1rem .5rem;
@@ -609,7 +610,7 @@ a .contacto-w {
 
 a .contacto-w p {
   color: #444;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0 .5rem;
 }
 
@@ -643,7 +644,6 @@ a .contacto-w:hover {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
-  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -657,9 +657,13 @@ a .contacto-w:hover {
   color: #fff;
 }
 
-.tabcontent, .tabcontent2, .tabcontent3, .tabcontent4, .tabcontent5 {
+.tabcontent, .tabcontent2, .tabcontent4, .tabcontent5 {
   display: none;
   padding: .5rem 0;
+}
+
+.tabcontent3 {
+  display: none;
 }
 
 /* Tablas de resultados */
@@ -668,9 +672,9 @@ a .contacto-w:hover {
   display: grid;
   -ms-grid-rows: (1fr)[2];
       grid-template-rows: repeat(2, 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
-  grid-auto-columns: 1fr 2fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr 4fr 1fr 1fr 1fr;
   padding: .5rem 0;
 }
 
@@ -679,16 +683,20 @@ a .contacto-w:hover {
   text-align: center;
   padding: .5rem;
   color: #fff;
+  font-weight: 300;
 }
 
 .res-data:nth-child(n+2) {
   background-color: #888;
   color: #fff;
+  text-align: left;
 }
 
 .res-data:nth-child(n+4) {
   background-color: #ccc;
   color: #000;
+  padding-top: 1rem;
+  text-align: center;
 }
 
 .res-data:nth-child(1) {
@@ -698,7 +706,7 @@ a .contacto-w:hover {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   grid-row: 1/3;
-  line-height: 4rem;
+  line-height: 5.5rem;
 }
 
 /* Tablas de Posiciones */
@@ -707,8 +715,9 @@ a .contacto-w:hover {
   display: grid;
   -ms-grid-rows: (1fr)[8];
       grid-template-rows: repeat(8, 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
+  grid-auto-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .pos-grupos5 {
@@ -716,15 +725,22 @@ a .contacto-w:hover {
   display: grid;
   -ms-grid-rows: (1fr)[7];
       grid-template-rows: repeat(7, 1fr);
-  gap: .5rem;
+  gap: .1rem;
   grid-auto-flow: column;
+  grid-auto-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .pos-data {
   background-color: #333;
   text-align: center;
   padding: .5rem;
+  padding-top: 1rem;
   color: #fff;
+}
+
+div[class^='pos-data'] + div[id*='-id'] {
+  text-align: left;
+  padding-top: 0.5rem;
 }
 
 .pos-data:nth-child(n+2) {
@@ -842,17 +858,16 @@ section article {
 }
 
 section article h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: .5rem;
 }
 
 section article p {
   text-align: justify;
-  font-size: 1.1rem;
 }
 
 .text-div {
-  padding: 1rem 0;
+  padding: 1rem;
 }
 
 .fa-globe {
@@ -863,4 +878,34 @@ section article p {
 .fa-globe:hover {
   color: #69dfe1;
   cursor: pointer;
+}
+
+@media (max-width: 350px) {
+  body {
+    font-size: 12px;
+  }
+  #title-h1 {
+    padding-left: .5rem;
+  }
+  #title-h1 span {
+    display: none;
+  }
+  section input.ac-main:checked ~ article.ac-small {
+    height: 40vh;
+  }
+  section input.ac-main:checked ~ article.ac-medium {
+    height: 40vh;
+  }
+  section input.ac-main:checked ~ article.ac-large {
+    height: 40vh;
+  }
+  .front-lang {
+    padding: 0 .5rem 2.5rem .5rem;
+  }
+}
+
+@media (min-width: 750px) {
+  body {
+    font-size: 18px;
+  }
 }
