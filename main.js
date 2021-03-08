@@ -2252,6 +2252,12 @@ window.addEventListener("load", includeResB2() );      //inners res B2
 window.addEventListener("load", includeResB3() );      //inners res B3
 window.addEventListener("load", includeResB4() );      //inners res B4
 
+//Clasificación a los cuadros
+//console.log( tablePosA1 );
+
+
+
+
 // *********************************************
 // *********************************************
 // *********************************************
