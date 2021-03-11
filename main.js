@@ -6,14 +6,24 @@ if ('serviceWorker' in navigator) {
 }
 
 // Permisos para notificaciones
-var button = document.getElementById("but-notif");
-button.addEventListener('click', function(e) {
+//var button = document.getElementById("but-notif");
+window.addEventListener('load', function(e) {
     Notification.requestPermission().then(function(result) {
         if(result === 'granted') {
             actualNotification();
         }
     });
 });
+
+// // Permisos para notificaciones
+// var button = document.getElementById("but-notif");
+// button.addEventListener('click', function(e) {
+//     Notification.requestPermission().then(function(result) {
+//         if(result === 'granted') {
+//             actualNotification();
+//         }
+//     });
+// });
 
 // Notificaciones
 var notif;
@@ -26,7 +36,7 @@ function actualNotification() {
         icon: notifImg
     }
     notif = new Notification(notifTitle, options);
-    //setTimeout(actualNotification, 30000);
+    setTimeout(actualNotification, 28800000);
 };
 
 // ***********************************************
