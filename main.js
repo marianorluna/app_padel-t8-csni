@@ -29,7 +29,8 @@ window.addEventListener('load', function(e) {
 var notif;
 function actualNotification() {
     var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
-    var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
+    var notifBody = "La aplicación está actualizada al 11/03/2021.";
+    //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
     var notifImg = './img/icon_64.png';
     var options = {
         body: notifBody,
