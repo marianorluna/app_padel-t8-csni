@@ -1,23 +1,13 @@
-// Validación PWA
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Registro de SW exitoso', reg))
-      .catch(err => console.warn('Error al tratar de registrar el sw', err))
-}
-
-// Permisos para notificaciones
-//var button = document.getElementById("but-notif");
-window.addEventListener('load', function(e) {
-    Notification.requestPermission().then(function(result) {
-        if(result === 'granted') {
-            actualNotification();
-        }
-    });
-});
+// // Validación PWA
+// if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('./sw.js')
+//       .then(reg => console.log('Registro de SW exitoso', reg))
+//       .catch(err => console.warn('Error al tratar de registrar el sw', err))
+// }
 
 // // Permisos para notificaciones
-// var button = document.getElementById("but-notif");
-// button.addEventListener('click', function(e) {
+// //var button = document.getElementById("but-notif");
+// window.addEventListener('load', function(e) {
 //     Notification.requestPermission().then(function(result) {
 //         if(result === 'granted') {
 //             actualNotification();
@@ -25,20 +15,30 @@ window.addEventListener('load', function(e) {
 //     });
 // });
 
-// Notificaciones
-var notif;
-function actualNotification() {
-    var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
-    var notifBody = "La aplicación está actualizada al día de hoy.";
-    //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
-    var notifImg = './img/icon_64.png';
-    var options = {
-        body: notifBody,
-        icon: notifImg
-    }
-    notif = new Notification(notifTitle, options);
-    setTimeout(actualNotification, 28800000);
-};
+// // // Permisos para notificaciones
+// // var button = document.getElementById("but-notif");
+// // button.addEventListener('click', function(e) {
+// //     Notification.requestPermission().then(function(result) {
+// //         if(result === 'granted') {
+// //             actualNotification();
+// //         }
+// //     });
+// // });
+
+// // Notificaciones
+// var notif;
+// function actualNotification() {
+//     var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
+//     var notifBody = "La aplicación está actualizada al día de hoy.";
+//     //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
+//     var notifImg = './img/icon_64.png';
+//     var options = {
+//         body: notifBody,
+//         icon: notifImg
+//     }
+//     notif = new Notification(notifTitle, options);
+//     setTimeout(actualNotification, 28800000);
+// };
 
 // ***********************************************
 // ***********************************************
@@ -2263,11 +2263,168 @@ window.addEventListener("load", includeResB2() );      //inners res B2
 window.addEventListener("load", includeResB3() );      //inners res B3
 window.addEventListener("load", includeResB4() );      //inners res B4
 
+// *********************************************
 //Clasificación a los cuadros
-//console.log( tablePosA1 );
+let allTablesFinalA = [tablePosA1, tablePosA2, tablePosA3, tablePosA4];
+let allTablesFinalB = [tablePosB1, tablePosB2, tablePosB3, tablePosB4];
+let cantClasifPorGrupo = 4;
+let clasificadosA = new Array();
+function obtenerClasifA() {
+    let group = "A";
+    for(let i=0; i < allTablesFinalA.length; i++) {
+        for(let j=0; j < cantClasifPorGrupo; j++) {
+            clasificadosA.push( new Clasificado(
+                group + (i+1),
+                allTablesFinalA[i][j].ord_po,
+                allTablesFinalA[i][j].id_po,
+                allTablesFinalA[i][j].pts_po,
+                allTablesFinalA[i][j].elo_po
+            ) );
+        }
+    }
+    return clasificadosA;
+};
+let octavosFinalA = new Array();
+function octavosFA(g) {
+    g = clasificadosA;
+    let clasif = new Array();
+    clasif[0] = g[0];
+    clasif[1] = g[15];
+    clasif[2] = g[5];
+    clasif[3] = g[10];
+    clasif[4] = g[6];
+    clasif[5] = g[9];
+    clasif[6] = g[3];
+    clasif[7] = g[12];
+    clasif[8] = g[4];
+    clasif[9] = g[11];
+    clasif[10] = g[1];
+    clasif[11] = g[14];
+    clasif[12] = g[2];
+    clasif[13] = g[13];
+    clasif[14] = g[7];
+    clasif[15] = g[8];
 
+    for(let i=0; i < clasif.length; i=i+2) {
+        octavosFinalA.push(new Game("", new GameTeam( clasif[i].id_cl, 0, 0, 0 ),  new GameTeam( clasif[i+1].id_cl, 0, 0, 0 )));
+    }
+    for(let i = 0; i < clasif.length/2; i++) {
+        octavosFinalA[i].id_pj = "8F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        octavosFinalA[i].team1.sets_t[0] = res8FA[i].s1_t1;
+        octavosFinalA[i].team2.sets_t[0] = res8FA[i].s1_t2;
+        octavosFinalA[i].team1.sets_t[1] = res8FA[i].s2_t1;
+        octavosFinalA[i].team2.sets_t[1] = res8FA[i].s2_t2;
+        octavosFinalA[i].team1.sets_t[2] = res8FA[i].s3_t1;
+        octavosFinalA[i].team2.sets_t[2] = res8FA[i].s3_t2;
+        octavosFinalA[i].team1.gwin_t = res8FA[i].s1_t1 + res8FA[i].s2_t1 + res8FA[i].s3_t1;
+        octavosFinalA[i].team2.gwin_t = res8FA[i].s1_t2 + res8FA[i].s2_t2 + res8FA[i].s3_t2;
+        gameJ(octavosFinalA[i]);
+    }
 
+    return octavosFinalA;
+};
+let cuartosFinalA = new Array();
+function cuartosFA(oc) {
+    oc = octavosFinalA;
+    g = new Array;
+    for(let i=0; i < octavosFinalA.length; i++) {
+        if(oc[i].team1.win_t == true) {
+            g.push( new GameTeam( oc[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( oc[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < octavosFinalA.length; i=i+2) {
+        cuartosFinalA.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < octavosFinalA.length/2; i++) {
+        cuartosFinalA[i].id_pj = "4F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        cuartosFinalA[i].team1.sets_t[0] = res4FA[i].s1_t1;
+        cuartosFinalA[i].team2.sets_t[0] = res4FA[i].s1_t2;
+        cuartosFinalA[i].team1.sets_t[1] = res4FA[i].s2_t1;
+        cuartosFinalA[i].team2.sets_t[1] = res4FA[i].s2_t2;
+        cuartosFinalA[i].team1.sets_t[2] = res4FA[i].s3_t1;
+        cuartosFinalA[i].team2.sets_t[2] = res4FA[i].s3_t2;
+        cuartosFinalA[i].team1.gwin_t = res4FA[i].s1_t1 + res4FA[i].s2_t1 + res4FA[i].s3_t1;
+        cuartosFinalA[i].team2.gwin_t = res4FA[i].s1_t2 + res4FA[i].s2_t2 + res4FA[i].s3_t2;
+        gameJ(cuartosFinalA[i]);
+    }
+    return cuartosFinalA;
+};
+let semisFinalA = new Array();
+function semisFA(cf) {
+    cf = cuartosFinalA;
+    g = new Array;
+    for(let i=0; i < cuartosFinalA.length; i++) {
+        if(cf[i].team1.win_t == true) {
+            g.push( new GameTeam( cf[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( cf[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < cuartosFinalA.length; i=i+2) {
+        semisFinalA.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < cuartosFinalA.length/2; i++) {
+        semisFinalA[i].id_pj = "2F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        semisFinalA[i].team1.sets_t[0] = res2FA[i].s1_t1;
+        semisFinalA[i].team2.sets_t[0] = res2FA[i].s1_t2;
+        semisFinalA[i].team1.sets_t[1] = res2FA[i].s2_t1;
+        semisFinalA[i].team2.sets_t[1] = res2FA[i].s2_t2;
+        semisFinalA[i].team1.sets_t[2] = res2FA[i].s3_t1;
+        semisFinalA[i].team2.sets_t[2] = res2FA[i].s3_t2;
+        semisFinalA[i].team1.gwin_t = res2FA[i].s1_t1 + res2FA[i].s2_t1 + res2FA[i].s3_t1;
+        semisFinalA[i].team2.gwin_t = res2FA[i].s1_t2 + res2FA[i].s2_t2 + res2FA[i].s3_t2;
+        gameJ(semisFinalA[i]);
+    }
+    return semisFinalA;
+};
+let finalFinalA = new Array();
+function finalFA(f) {
+    f = semisFinalA;
+    g = new Array;
+    for(let i=0; i < semisFinalA.length; i++) {
+        if(f[i].team1.win_t == true) {
+            g.push( new GameTeam( f[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( f[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < semisFinalA.length; i=i+2) {
+        finalFinalA.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < semisFinalA.length/2; i++) {
+        finalFinalA[i].id_pj = "2F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        finalFinalA[i].team1.sets_t[0] = res1FA[i].s1_t1;
+        finalFinalA[i].team2.sets_t[0] = res1FA[i].s1_t2;
+        finalFinalA[i].team1.sets_t[1] = res1FA[i].s2_t1;
+        finalFinalA[i].team2.sets_t[1] = res1FA[i].s2_t2;
+        finalFinalA[i].team1.sets_t[2] = res1FA[i].s3_t1;
+        finalFinalA[i].team2.sets_t[2] = res1FA[i].s3_t2;
+        finalFinalA[i].team1.gwin_t = res1FA[i].s1_t1 + res1FA[i].s2_t1 + res1FA[i].s3_t1;
+        finalFinalA[i].team2.gwin_t = res1FA[i].s1_t2 + res1FA[i].s2_t2 + res1FA[i].s3_t2;
+        gameJ(finalFinalA[i]);
+    }
+    return finalFinalA;
+};
 
+console.log(clasificadosA);
+console.log(groupA);
+console.log(allTablesFinalA);
+console.log( obtenerClasifA() );
+console.log( clasificadosA[0].id_cl );
+
+console.log( octavosFA() );
+console.log( cuartosFA() );
+console.log( semisFA() );
+console.log( finalFA() );
 
 // *********************************************
 // *********************************************

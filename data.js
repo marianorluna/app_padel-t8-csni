@@ -86,6 +86,19 @@ class Position
         this.gc_po = 0;
         this.dg_po = 0;
         this.pts_po = 0;
+        this.elo_po = 0;
+    }
+};
+
+class Clasificado
+{
+    constructor(gr, pos, id, pts, elo)
+    {
+        this.gr_cl = gr;
+        this.pos_cl = pos;
+        this.id_cl = id;
+        this.pts_cl = pts;
+        this.elo_cl = elo;
     }
 };
 
@@ -832,8 +845,8 @@ let dataJugadores = [
 ];
 //****************************
 //****************************
-
-// //Resultados Grupo A1
+//RESULTADOS DE LOS GRUPOS
+//Resultados Grupo A1
 let resGamesA1 = [
     {
         //Partido P1
@@ -1777,11 +1790,11 @@ let resGamesB2 = [
     {
         //Partido P13
         //Set1
-        s1_t1: 0,
-        s1_t2: 0,
+        s1_t1: 1,
+        s1_t2: 6,
         //Set2
         s2_t1: 0,
-        s2_t2: 0,
+        s2_t2: 6,
         //Set3
         s3_t1: 0,
         s3_t2: 0
@@ -2177,6 +2190,400 @@ let resGamesB4 = [
         s3_t2: 0
     }
 ];
+
+//****************************
+//****************************
+//FINALES GRUPO A
+//Cuadros Finales - Octavos A
+let res8FA = [
+    {
+        //8F1
+        //Set1
+        s1_t1: 6,
+        s1_t2: 4,
+        //Set2
+        s2_t1: 5,
+        s2_t2: 7,
+        //Set3
+        s3_t1: 7,
+        s3_t2: 6
+    },
+    {
+        //8F2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Cuartos A
+let res4FA = [
+    {
+        //4F1
+        //Set1
+        s1_t1: 7,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 1,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 2
+    },
+    {
+        //4F2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //4F3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //4F4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Semifinal A
+let res2FA = [
+    {
+        //SF1
+        //Set1
+        s1_t1: 5,
+        s1_t2: 7,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 4
+    },
+    {
+        //SF2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Final A
+let res1FA = [
+    {
+        //F1
+        //Set1
+        s1_t1: 7,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 7,
+        //Set3
+        s3_t1: 7,
+        s3_t2: 6
+    }
+];
+//****************************
+//****************************
+//FINALES GRUPO B
+//Cuadros Finales - Octavos B
+let res8FB = [
+    {
+        //8F1
+        //Set1
+        s1_t1: 6,
+        s1_t2: 4,
+        //Set2
+        s2_t1: 5,
+        s2_t2: 7,
+        //Set3
+        s3_t1: 7,
+        s3_t2: 6
+    },
+    {
+        //8F2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F5
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F6
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F7
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //8F8
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Cuartos B
+let res4FB = [
+    {
+        //4F1
+        //Set1
+        s1_t1: 7,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 1,
+        s2_t2: 6,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 2
+    },
+    {
+        //4F2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //4F3
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    },
+    {
+        //4F4
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Semifinal B
+let res2FB = [
+    {
+        //SF1
+        //Set1
+        s1_t1: 5,
+        s1_t2: 7,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 2,
+        //Set3
+        s3_t1: 6,
+        s3_t2: 4
+    },
+    {
+        //SF2
+        //Set1
+        s1_t1: 0,
+        s1_t2: 0,
+        //Set2
+        s2_t1: 0,
+        s2_t2: 0,
+        //Set3
+        s3_t1: 0,
+        s3_t2: 0
+    }
+];
+//Cuadros Finales - Final B
+let res1FB = [
+    {
+        //F1
+        //Set1
+        s1_t1: 7,
+        s1_t2: 6,
+        //Set2
+        s2_t1: 6,
+        s2_t2: 7,
+        //Set3
+        s3_t1: 7,
+        s3_t2: 6
+    }
+];
+//****************************
+//****************************
+
 
 //Resultados de ejemplo GA1
 // //Resultados Grupo A1
