@@ -1,13 +1,23 @@
-// // Validación PWA
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('./sw.js')
-//       .then(reg => console.log('Registro de SW exitoso', reg))
-//       .catch(err => console.warn('Error al tratar de registrar el sw', err))
-// }
+// Validación PWA
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Registro de SW exitoso', reg))
+      .catch(err => console.warn('Error al tratar de registrar el sw', err))
+}
+
+// Permisos para notificaciones
+//var button = document.getElementById("but-notif");
+window.addEventListener('load', function(e) {
+    Notification.requestPermission().then(function(result) {
+        if(result === 'granted') {
+            actualNotification();
+        }
+    });
+});
 
 // // Permisos para notificaciones
-// //var button = document.getElementById("but-notif");
-// window.addEventListener('load', function(e) {
+// var button = document.getElementById("but-notif");
+// button.addEventListener('click', function(e) {
 //     Notification.requestPermission().then(function(result) {
 //         if(result === 'granted') {
 //             actualNotification();
@@ -15,30 +25,20 @@
 //     });
 // });
 
-// // // Permisos para notificaciones
-// // var button = document.getElementById("but-notif");
-// // button.addEventListener('click', function(e) {
-// //     Notification.requestPermission().then(function(result) {
-// //         if(result === 'granted') {
-// //             actualNotification();
-// //         }
-// //     });
-// // });
-
-// // Notificaciones
-// var notif;
-// function actualNotification() {
-//     var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
-//     var notifBody = "La aplicación está actualizada al día de hoy.";
-//     //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
-//     var notifImg = './img/icon_64.png';
-//     var options = {
-//         body: notifBody,
-//         icon: notifImg
-//     }
-//     notif = new Notification(notifTitle, options);
-//     setTimeout(actualNotification, 28800000);
-// };
+// Notificaciones
+var notif;
+function actualNotification() {
+    var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
+    var notifBody = "La aplicación está actualizada al día de hoy.";
+    //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
+    var notifImg = './img/icon_64.png';
+    var options = {
+        body: notifBody,
+        icon: notifImg
+    }
+    notif = new Notification(notifTitle, options);
+    setTimeout(actualNotification, 28800000);
+};
 
 // ***********************************************
 // ***********************************************
