@@ -2269,6 +2269,15 @@ let allTablesFinalA = [tablePosA1, tablePosA2, tablePosA3, tablePosA4];
 let allTablesFinalB = [tablePosB1, tablePosB2, tablePosB3, tablePosB4];
 let cantClasifPorGrupo = 4;
 let clasificadosA = new Array();
+let clasificadosB = new Array();
+let octavosFinalA = new Array();
+let octavosFinalB = new Array();
+let cuartosFinalA = new Array();
+let cuartosFinalB = new Array();
+let semisFinalA = new Array();
+let semisFinalB = new Array();
+let finalFinalA = new Array();
+let finalFinalB = new Array();
 function obtenerClasifA() {
     let group = "A";
     for(let i=0; i < allTablesFinalA.length; i++) {
@@ -2284,7 +2293,21 @@ function obtenerClasifA() {
     }
     return clasificadosA;
 };
-let octavosFinalA = new Array();
+function obtenerClasifB() {
+    let group = "B";
+    for(let i=0; i < allTablesFinalB.length; i++) {
+        for(let j=0; j < cantClasifPorGrupo; j++) {
+            clasificadosB.push( new Clasificado(
+                group + (i+1),
+                allTablesFinalB[i][j].ord_po,
+                allTablesFinalB[i][j].id_po,
+                allTablesFinalB[i][j].pts_po,
+                allTablesFinalB[i][j].elo_po
+            ) );
+        }
+    }
+    return clasificadosB;
+};
 function octavosFA(g) {
     g = clasificadosA;
     let clasif = new Array();
@@ -2324,7 +2347,45 @@ function octavosFA(g) {
 
     return octavosFinalA;
 };
-let cuartosFinalA = new Array();
+function octavosFB(g) {
+    g = clasificadosB;
+    let clasif = new Array();
+    clasif[0] = g[0];
+    clasif[1] = g[15];
+    clasif[2] = g[5];
+    clasif[3] = g[10];
+    clasif[4] = g[6];
+    clasif[5] = g[9];
+    clasif[6] = g[3];
+    clasif[7] = g[12];
+    clasif[8] = g[4];
+    clasif[9] = g[11];
+    clasif[10] = g[1];
+    clasif[11] = g[14];
+    clasif[12] = g[2];
+    clasif[13] = g[13];
+    clasif[14] = g[7];
+    clasif[15] = g[8];
+
+    for(let i=0; i < clasif.length; i=i+2) {
+        octavosFinalB.push(new Game("", new GameTeam( clasif[i].id_cl, 0, 0, 0 ),  new GameTeam( clasif[i+1].id_cl, 0, 0, 0 )));
+    }
+    for(let i = 0; i < clasif.length/2; i++) {
+        octavosFinalB[i].id_pj = "8F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        octavosFinalB[i].team1.sets_t[0] = res8FB[i].s1_t1;
+        octavosFinalB[i].team2.sets_t[0] = res8FB[i].s1_t2;
+        octavosFinalB[i].team1.sets_t[1] = res8FB[i].s2_t1;
+        octavosFinalB[i].team2.sets_t[1] = res8FB[i].s2_t2;
+        octavosFinalB[i].team1.sets_t[2] = res8FB[i].s3_t1;
+        octavosFinalB[i].team2.sets_t[2] = res8FB[i].s3_t2;
+        octavosFinalB[i].team1.gwin_t = res8FB[i].s1_t1 + res8FB[i].s2_t1 + res8FB[i].s3_t1;
+        octavosFinalB[i].team2.gwin_t = res8FB[i].s1_t2 + res8FB[i].s2_t2 + res8FB[i].s3_t2;
+        gameJ(octavosFinalB[i]);
+    }
+
+    return octavosFinalB;
+};
 function cuartosFA(oc) {
     oc = octavosFinalA;
     g = new Array;
@@ -2354,7 +2415,35 @@ function cuartosFA(oc) {
     }
     return cuartosFinalA;
 };
-let semisFinalA = new Array();
+function cuartosFB(oc) {
+    oc = octavosFinalB;
+    g = new Array;
+    for(let i=0; i < octavosFinalB.length; i++) {
+        if(oc[i].team1.win_t == true) {
+            g.push( new GameTeam( oc[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( oc[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < octavosFinalB.length; i=i+2) {
+        cuartosFinalB.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < octavosFinalB.length/2; i++) {
+        cuartosFinalB[i].id_pj = "4F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        cuartosFinalB[i].team1.sets_t[0] = res4FB[i].s1_t1;
+        cuartosFinalB[i].team2.sets_t[0] = res4FB[i].s1_t2;
+        cuartosFinalB[i].team1.sets_t[1] = res4FB[i].s2_t1;
+        cuartosFinalB[i].team2.sets_t[1] = res4FB[i].s2_t2;
+        cuartosFinalB[i].team1.sets_t[2] = res4FB[i].s3_t1;
+        cuartosFinalB[i].team2.sets_t[2] = res4FB[i].s3_t2;
+        cuartosFinalB[i].team1.gwin_t = res4FB[i].s1_t1 + res4FB[i].s2_t1 + res4FB[i].s3_t1;
+        cuartosFinalB[i].team2.gwin_t = res4FB[i].s1_t2 + res4FB[i].s2_t2 + res4FB[i].s3_t2;
+        gameJ(cuartosFinalB[i]);
+    }
+    return cuartosFinalB;
+};
 function semisFA(cf) {
     cf = cuartosFinalA;
     g = new Array;
@@ -2384,7 +2473,35 @@ function semisFA(cf) {
     }
     return semisFinalA;
 };
-let finalFinalA = new Array();
+function semisFB(cf) {
+    cf = cuartosFinalB;
+    g = new Array;
+    for(let i=0; i < cuartosFinalB.length; i++) {
+        if(cf[i].team1.win_t == true) {
+            g.push( new GameTeam( cf[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( cf[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < cuartosFinalB.length; i=i+2) {
+        semisFinalB.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < cuartosFinalB.length/2; i++) {
+        semisFinalB[i].id_pj = "2F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        semisFinalB[i].team1.sets_t[0] = res2FB[i].s1_t1;
+        semisFinalB[i].team2.sets_t[0] = res2FB[i].s1_t2;
+        semisFinalB[i].team1.sets_t[1] = res2FB[i].s2_t1;
+        semisFinalB[i].team2.sets_t[1] = res2FB[i].s2_t2;
+        semisFinalB[i].team1.sets_t[2] = res2FB[i].s3_t1;
+        semisFinalB[i].team2.sets_t[2] = res2FB[i].s3_t2;
+        semisFinalB[i].team1.gwin_t = res2FB[i].s1_t1 + res2FB[i].s2_t1 + res2FB[i].s3_t1;
+        semisFinalB[i].team2.gwin_t = res2FB[i].s1_t2 + res2FB[i].s2_t2 + res2FB[i].s3_t2;
+        gameJ(semisFinalB[i]);
+    }
+    return semisFinalB;
+};
 function finalFA(f) {
     f = semisFinalA;
     g = new Array;
@@ -2414,17 +2531,268 @@ function finalFA(f) {
     }
     return finalFinalA;
 };
+function finalFB(f) {
+    f = semisFinalB;
+    g = new Array;
+    for(let i=0; i < semisFinalB.length; i++) {
+        if(f[i].team1.win_t == true) {
+            g.push( new GameTeam( f[i].team1.id_t, 0, 0, 0 ));
+        }
+        else {
+            g.push( new GameTeam( f[i].team2.id_t, 0, 0, 0 ));
+        }
+    }
+    for(let i=0; i < semisFinalB.length; i=i+2) {
+        finalFinalB.push(new Game("", g[i], g[i+1] ) );
+    }
+    for(let i = 0; i < semisFinalB.length/2; i++) {
+        finalFinalB[i].id_pj = "2F" + (i+1);
+        //se agregan los resultados desde el archivo data.js
+        finalFinalB[i].team1.sets_t[0] = res1FB[i].s1_t1;
+        finalFinalB[i].team2.sets_t[0] = res1FB[i].s1_t2;
+        finalFinalB[i].team1.sets_t[1] = res1FB[i].s2_t1;
+        finalFinalB[i].team2.sets_t[1] = res1FB[i].s2_t2;
+        finalFinalB[i].team1.sets_t[2] = res1FB[i].s3_t1;
+        finalFinalB[i].team2.sets_t[2] = res1FB[i].s3_t2;
+        finalFinalB[i].team1.gwin_t = res1FB[i].s1_t1 + res1FB[i].s2_t1 + res1FB[i].s3_t1;
+        finalFinalB[i].team2.gwin_t = res1FB[i].s1_t2 + res1FB[i].s2_t2 + res1FB[i].s3_t2;
+        gameJ(finalFinalB[i]);
+    }
+    return finalFinalB;
+};
 
-console.log(clasificadosA);
-console.log(groupA);
-console.log(allTablesFinalA);
-console.log( obtenerClasifA() );
-console.log( clasificadosA[0].id_cl );
+// IMPORTANTE PARA LOS CÁLCULOS!!!
+window.addEventListener("load", obtenerClasifA() );     //carga variable: clasificadosA
+window.addEventListener("load", octavosFA() );          //carga variable: octavosFinalA
+window.addEventListener("load", cuartosFA() );          //carga variable: cuartosFinalA
+window.addEventListener("load", semisFA() );            //carga variable: semisFinalA
+window.addEventListener("load", finalFA() );            //carga variable: finalFinalA
+window.addEventListener("load", obtenerClasifB() );     //carga variable: clasificadosB
+window.addEventListener("load", octavosFB() );          //carga variable: octavosFinalB
+window.addEventListener("load", cuartosFB() );          //carga variable: cuartosFinalB
+window.addEventListener("load", semisFB() );            //carga variable: semisFinalB
+window.addEventListener("load", finalFB() );            //carga variable: finalFinalB
 
-console.log( octavosFA() );
-console.log( cuartosFA() );
-console.log( semisFA() );
-console.log( finalFA() );
+//Incluir resultados en HTML
+let innerRes8A = document.getElementsByClassName("res8vosA");
+let innerRes4A = document.getElementsByClassName("res4vosA");
+let innerRes2A = document.getElementsByClassName("res2vosA");
+let innerRes1A = document.getElementsByClassName("res1vosA");
+let innerRes8B = document.getElementsByClassName("res8vosB");
+let innerRes4B = document.getElementsByClassName("res4vosB");
+let innerRes2B = document.getElementsByClassName("res2vosB");
+let innerRes1B = document.getElementsByClassName("res1vosB");
+
+function includeRes8A() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < octavosFinalA.length; j++) {
+        innerRes8A[0].children[j].children[1].innerHTML = octavosFinalA[j].team1.id_t;
+        innerRes8A[0].children[j].children[2].innerHTML = octavosFinalA[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes8A[0].children.length; i++) {
+        innerRes8A[0].children[i].children[3].innerHTML = octavosFinalA[i].team1.sets_t[0];
+        innerRes8A[0].children[i].children[4].innerHTML = octavosFinalA[i].team2.sets_t[0];
+        innerRes8A[0].children[i].children[5].innerHTML = octavosFinalA[i].team1.sets_t[1];
+        innerRes8A[0].children[i].children[6].innerHTML = octavosFinalA[i].team2.sets_t[1];
+        innerRes8A[0].children[i].children[7].innerHTML = octavosFinalA[i].team1.sets_t[2];
+        innerRes8A[0].children[i].children[8].innerHTML = octavosFinalA[i].team2.sets_t[2];
+    }
+};
+function includeRes8B() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < octavosFinalB.length; j++) {
+        innerRes8B[0].children[j].children[1].innerHTML = octavosFinalB[j].team1.id_t;
+        innerRes8B[0].children[j].children[2].innerHTML = octavosFinalB[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes8B[0].children.length; i++) {
+        innerRes8B[0].children[i].children[3].innerHTML = octavosFinalB[i].team1.sets_t[0];
+        innerRes8B[0].children[i].children[4].innerHTML = octavosFinalB[i].team2.sets_t[0];
+        innerRes8B[0].children[i].children[5].innerHTML = octavosFinalB[i].team1.sets_t[1];
+        innerRes8B[0].children[i].children[6].innerHTML = octavosFinalB[i].team2.sets_t[1];
+        innerRes8B[0].children[i].children[7].innerHTML = octavosFinalB[i].team1.sets_t[2];
+        innerRes8B[0].children[i].children[8].innerHTML = octavosFinalB[i].team2.sets_t[2];
+    }
+};
+function includeRes4A() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < cuartosFinalA.length; j++) {
+        innerRes4A[0].children[j].children[1].innerHTML = cuartosFinalA[j].team1.id_t;
+        innerRes4A[0].children[j].children[2].innerHTML = cuartosFinalA[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes4A[0].children.length; i++) {
+        innerRes4A[0].children[i].children[3].innerHTML = cuartosFinalA[i].team1.sets_t[0];
+        innerRes4A[0].children[i].children[4].innerHTML = cuartosFinalA[i].team2.sets_t[0];
+        innerRes4A[0].children[i].children[5].innerHTML = cuartosFinalA[i].team1.sets_t[1];
+        innerRes4A[0].children[i].children[6].innerHTML = cuartosFinalA[i].team2.sets_t[1];
+        innerRes4A[0].children[i].children[7].innerHTML = cuartosFinalA[i].team1.sets_t[2];
+        innerRes4A[0].children[i].children[8].innerHTML = cuartosFinalA[i].team2.sets_t[2];
+    }
+};
+function includeRes4B() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < cuartosFinalB.length; j++) {
+        innerRes4B[0].children[j].children[1].innerHTML = cuartosFinalB[j].team1.id_t;
+        innerRes4B[0].children[j].children[2].innerHTML = cuartosFinalB[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes4B[0].children.length; i++) {
+        innerRes4B[0].children[i].children[3].innerHTML = cuartosFinalB[i].team1.sets_t[0];
+        innerRes4B[0].children[i].children[4].innerHTML = cuartosFinalB[i].team2.sets_t[0];
+        innerRes4B[0].children[i].children[5].innerHTML = cuartosFinalB[i].team1.sets_t[1];
+        innerRes4B[0].children[i].children[6].innerHTML = cuartosFinalB[i].team2.sets_t[1];
+        innerRes4B[0].children[i].children[7].innerHTML = cuartosFinalB[i].team1.sets_t[2];
+        innerRes4B[0].children[i].children[8].innerHTML = cuartosFinalB[i].team2.sets_t[2];
+    }
+};
+function includeRes2A() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < semisFinalA.length; j++) {
+        innerRes2A[0].children[j].children[1].innerHTML = semisFinalA[j].team1.id_t;
+        innerRes2A[0].children[j].children[2].innerHTML = semisFinalA[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes2A[0].children.length; i++) {
+        innerRes2A[0].children[i].children[3].innerHTML = semisFinalA[i].team1.sets_t[0];
+        innerRes2A[0].children[i].children[4].innerHTML = semisFinalA[i].team2.sets_t[0];
+        innerRes2A[0].children[i].children[5].innerHTML = semisFinalA[i].team1.sets_t[1];
+        innerRes2A[0].children[i].children[6].innerHTML = semisFinalA[i].team2.sets_t[1];
+        innerRes2A[0].children[i].children[7].innerHTML = semisFinalA[i].team1.sets_t[2];
+        innerRes2A[0].children[i].children[8].innerHTML = semisFinalA[i].team2.sets_t[2];
+    }
+};
+function includeRes2B() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < semisFinalB.length; j++) {
+        innerRes2B[0].children[j].children[1].innerHTML = semisFinalB[j].team1.id_t;
+        innerRes2B[0].children[j].children[2].innerHTML = semisFinalB[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes2B[0].children.length; i++) {
+        innerRes2B[0].children[i].children[3].innerHTML = semisFinalB[i].team1.sets_t[0];
+        innerRes2B[0].children[i].children[4].innerHTML = semisFinalB[i].team2.sets_t[0];
+        innerRes2B[0].children[i].children[5].innerHTML = semisFinalB[i].team1.sets_t[1];
+        innerRes2B[0].children[i].children[6].innerHTML = semisFinalB[i].team2.sets_t[1];
+        innerRes2B[0].children[i].children[7].innerHTML = semisFinalB[i].team1.sets_t[2];
+        innerRes2B[0].children[i].children[8].innerHTML = semisFinalB[i].team2.sets_t[2];
+    }
+};
+function includeRes1A() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < finalFinalA.length; j++) {
+        innerRes1A[0].children[j].children[1].innerHTML = finalFinalA[j].team1.id_t;
+        innerRes1A[0].children[j].children[2].innerHTML = finalFinalA[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes1A[0].children.length; i++) {
+        innerRes1A[0].children[i].children[3].innerHTML = finalFinalA[i].team1.sets_t[0];
+        innerRes1A[0].children[i].children[4].innerHTML = finalFinalA[i].team2.sets_t[0];
+        innerRes1A[0].children[i].children[5].innerHTML = finalFinalA[i].team1.sets_t[1];
+        innerRes1A[0].children[i].children[6].innerHTML = finalFinalA[i].team2.sets_t[1];
+        innerRes1A[0].children[i].children[7].innerHTML = finalFinalA[i].team1.sets_t[2];
+        innerRes1A[0].children[i].children[8].innerHTML = finalFinalA[i].team2.sets_t[2];
+    }
+};
+function includeRes1B() {
+    //hacer los innerHTML de los ids
+    for(let j = 0; j < finalFinalB.length; j++) {
+        innerRes1B[0].children[j].children[1].innerHTML = finalFinalB[j].team1.id_t;
+        innerRes1B[0].children[j].children[2].innerHTML = finalFinalB[j].team2.id_t;
+    }
+    //hacer los innerHTML en los resultados
+    for(let i = 0; i < innerRes1B[0].children.length; i++) {
+        innerRes1B[0].children[i].children[3].innerHTML = finalFinalB[i].team1.sets_t[0];
+        innerRes1B[0].children[i].children[4].innerHTML = finalFinalB[i].team2.sets_t[0];
+        innerRes1B[0].children[i].children[5].innerHTML = finalFinalB[i].team1.sets_t[1];
+        innerRes1B[0].children[i].children[6].innerHTML = finalFinalB[i].team2.sets_t[1];
+        innerRes1B[0].children[i].children[7].innerHTML = finalFinalB[i].team1.sets_t[2];
+        innerRes1B[0].children[i].children[8].innerHTML = finalFinalB[i].team2.sets_t[2];
+    }
+};
+
+// Inserta texto con nombre de los campeones
+let colocarTxtA = document.getElementById("finGa4");
+let campeonA = document.createElement("div");
+let trophyA = document.createElement("i");
+let txtA = document.createElement("p");
+let colocarTxtB = document.getElementById("finGb4");
+let campeonB = document.createElement("div");
+let trophyB = document.createElement("i");
+let txtB = document.createElement("p");
+
+function textFinalA() {
+    campeonA.className = "parWin";
+    trophyA.className = "fas fa-trophy";
+    txtA.className = "txtWin";
+    if(finalFinalA[0].play == true) {
+        if(finalFinalA[0].team1.win_t == true) {
+            colocarTxtA.appendChild(campeonA);
+            campeonA.appendChild(trophyA);
+            campeonA.appendChild(txtA);
+            txtA.innerHTML = finalFinalA[0].team1.id_t;
+        }
+        else {
+            colocarTxtA.appendChild(campeonA);
+            campeonA.appendChild(trophyA);
+            campeonA.appendChild(txtA);
+            txtA.innerHTML = finalFinalA[0].team2.id_t;
+        }
+    };
+};
+function textFinalB() {
+    campeonB.className = "parWin";
+    trophyB.className = "fas fa-trophy";
+    txtB.className = "txtWin";
+    if(finalFinalB[0].play == true) {
+        if(finalFinalB[0].team1.win_t == true) {
+            colocarTxtB.appendChild(campeonB);
+            campeonB.appendChild(trophyB);
+            campeonB.appendChild(txtB);
+            txtB.innerHTML = finalFinalB[0].team1.id_t;
+        }
+        else {
+            colocarTxtB.appendChild(campeonB);
+            campeonB.appendChild(trophyB);
+            campeonB.appendChild(txtB);
+            txtB.innerHTML = finalFinalB[0].team2.id_t;
+        }
+    };
+};
+
+// IMPORTANTE PARA LOS CÁLCULOS!!! Habilitar a medida que existan resultados!!
+//window.addEventListener("load", includeRes8A() );      //inners res 8vosA
+//window.addEventListener("load", includeRes8B() );      //inners res 8vosB
+//window.addEventListener("load", includeRes4A() );      //inners res 4vosA
+//window.addEventListener("load", includeRes4B() );      //inners res 4vosB
+//window.addEventListener("load", includeRes2A() );      //inners res 2vosA
+//window.addEventListener("load", includeRes2B() );      //inners res 2vosB
+//window.addEventListener("load", includeRes1A() );      //inners res 1vosA
+//window.addEventListener("load", includeRes1B() );      //inners res 1vosB
+window.addEventListener("load", textFinalA() );        //añade texto win A
+window.addEventListener("load", textFinalB() );        //añade texto win B
+
+// Resaltar los partidos JUGADOS
+let playGreen = document.getElementsByClassName("res-ok");
+let playCount = document.getElementsByClassName("partidoJ");
+function colorPlayGreen() {
+    for(let i=0; i<playCount.length; i++) {
+        if(playCount[i].children[3].innerHTML != 0 || playCount[i].children[4].innerHTML != 0) {
+            playCount[i].children[0].style.backgroundColor = "#69dfe1";
+            playCount[i].children[0].style.color = "#666";
+            playCount[i].children[0].style.fontWeight = "500";
+            playCount[i].children[0].style.fontSize = "1rem";
+            for(let j=3; j<9; j++) {
+                playCount[i].children[j].style.color = "#666";
+                playCount[i].children[j].style.fontWeight = "500";
+                playCount[i].children[j].style.fontSize = "1.1rem";
+            }
+        }
+    }
+};
+// IMPORTANTE PARA LOS CÁLCULOS!!!
+window.addEventListener("load", colorPlayGreen() );      //resalta los partidos jugados
 
 // *********************************************
 // *********************************************

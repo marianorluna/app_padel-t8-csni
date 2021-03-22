@@ -103,7 +103,11 @@ textosESP = [
 "<span>2. PG - </span> Partidos ganados",
 "<span>3. DS - </span> Diferencia de sets",
 "<span>4. DG - </span> Diferencia de juegos",
-"<span>5. RE - </span> Resultado entre ambos"
+"<span>5. RE - </span> Resultado entre ambos",
+"Octavos",
+"Cuartos",
+"Semifinal",
+"Final"
 ];
 
 // Txt ENGLISH
@@ -211,7 +215,11 @@ textosENG = [
 "<span> 2. PG - </span> Matches won",
 "<span> 3. DS - </span> Difference of sets",
 "<span> 4. DG - </span> Difference of games",
-"<span> 5. RE - </span> Result between both"
+"<span> 5. RE - </span> Result between both",
+"Round of 16",
+"Quarter finals",
+"Semifinal",
+"Final"
 ];
 
 // Txt CATALÀ
@@ -319,7 +327,11 @@ textosCAT = [
 "<span> 2. PG - </span> Partits guanyats",
 "<span> 3. DS - </span> Diferència de sets",
 "<span> 4. DG - </span> Diferència de jocs",
-"<span> 5. RE - </span> Resultat entre tots dos"
+"<span> 5. RE - </span> Resultat entre tots dos",
+"Vuitens",
+"Quarts",
+"Semifinal",
+"Final"
 ];
 
 /* Variables a traducir */
@@ -426,6 +438,10 @@ let trad100 = document.getElementById("par-21");
 let trad101 = document.getElementById("par-22");
 let trad102 = document.getElementById("par-23");
 let trad103 = document.getElementById("par-24");
+let trad104 = document.getElementById("defaultOpen7");
+let trad105 = document.getElementById("but-pest-08");
+let trad106 = document.getElementById("but-pest-09");
+let trad107 = document.getElementById("but-pest-10");
 
 // let trad104 = document.getElementById("");
 // let trad105 = document.getElementById("");
@@ -539,5 +555,9 @@ textosID = [
     trad100,
     trad101,
     trad102,
-    trad103
+    trad103,
+    trad104,
+    trad105,
+    trad106,
+    trad107
 ];
