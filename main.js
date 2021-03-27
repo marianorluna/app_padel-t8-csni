@@ -29,7 +29,7 @@ window.addEventListener('load', function(e) {
 var notif;
 function actualNotification() {
     var notifTitle = "VIII Torneo de Pádel CSNI, bienvenido.";
-    var notifBody = "La aplicación está actualizada al día de hoy | v1.3.4";
+    var notifBody = "La aplicación está actualizada al día de hoy " + hoyFecha();
     //var notifBody = "Has actualizado el sistema de notificaciones. A partir de ahora estarás al tanto de las últimas noticias.";
     var notifImg = './img/icon_64.png';
     var options = {
@@ -39,6 +39,26 @@ function actualNotification() {
     notif = new Notification(notifTitle, options);
     setTimeout(actualNotification, 28800000);
 };
+// ***********************************************
+// ***********************************************
+// Fecha de HOY
+function hoyFecha(){
+    function addZero(i) {
+        if (i < 10) {
+            i = '0' + i;
+        }
+        return i;
+    }
+    var hoy = new Date();
+        var dd = hoy.getDate();
+        var mm = hoy.getMonth()+1;
+        var yyyy = hoy.getFullYear();
+        
+        dd = addZero(dd);
+        mm = addZero(mm);
+
+        return dd+'/'+mm+'/'+yyyy;
+}
 
 // ***********************************************
 // ***********************************************
