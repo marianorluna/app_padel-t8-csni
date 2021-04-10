@@ -2,7 +2,7 @@
 let textosESP = [];
 textosESP = [
 "VIII Torneo Padel <span>CSNI</span>",
-"Fecha limite - Fase de Liga hasta 02/05/2021",
+//"Fecha limite - Fase de Liga hasta 02/05/2021",
 "Informacion",
 "General",
 "Noticias",
@@ -114,7 +114,7 @@ textosESP = [
 let textosENG = [];
 textosENG = [
 "<span>VIII </span>Padel Tournament",
-"Deadline - League Phase until 02/05/2021",
+//"Deadline - League Phase until 02/05/2021",
 "Information",
 "General",
 "News",
@@ -226,7 +226,7 @@ textosENG = [
 let textosCAT = [];
 textosCAT = [
 "VIII Torneig Pàdel <span>CSNI</span>",
-"Data limiti - Fase de Lliga fins 2021.05.02",
+//"Data limiti - Fase de Lliga fins 2021.05.02",
 "Informació",
 "General",
 "Notícies",
@@ -336,7 +336,7 @@ textosCAT = [
 
 /* Variables a traducir */
 let trad1 = document.getElementById("title-h1");
-let trad2 = document.getElementById("text-news");
+//let trad2 = document.getElementById("text-news");
 let trad3 = document.getElementById("lab-01");
 let trad4 = document.getElementById("defaultOpen3");
 let trad5 = document.getElementById("but-pest-01");
@@ -454,7 +454,7 @@ let trad107 = document.getElementById("but-pest-10");
 let textosID = [];
 textosID = [
     trad1,
-    trad2,
+    //trad2,
     trad3,
     trad4,
     trad5,
