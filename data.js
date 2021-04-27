@@ -929,8 +929,8 @@ let resGamesA1 = [
         s2_t1: 6,
         s2_t2: 4,
         //Set3
-        s3_t1: 3,
-        s3_t2: 6
+        s3_t1: 6,
+        s3_t2: 3
     },
     {
         //Partido P8
