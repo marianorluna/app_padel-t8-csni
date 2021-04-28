@@ -2024,11 +2024,11 @@ let resGamesB4 = [
     {
         //Partido P2
         //Set1
-        s1_t1: 0,
-        s1_t2: 0,
+        s1_t1: 6,
+        s1_t2: 1,
         //Set2
-        s2_t1: 0,
-        s2_t2: 0,
+        s2_t1: 6,
+        s2_t2: 4,
         //Set3
         s3_t1: 0,
         s3_t2: 0
