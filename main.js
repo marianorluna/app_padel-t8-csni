@@ -2326,6 +2326,12 @@ function obtenerClasifB() {
             ) );
         }
     }
+    //cambio de la organización, era Jordi More-Toni Paloma ahora Mariano-Borja
+    clasificadosB[11].pos_cl = allTablesFinalB[2][4].ord_po;
+    clasificadosB[11].id_cl = allTablesFinalB[2][4].id_po;
+    clasificadosB[11].pts_cl = allTablesFinalB[2][4].pts_po;
+    clasificadosB[11].elo_cl = allTablesFinalB[2][4].elo_po;     
+    //console.log(clasificadosB[11]);
     return clasificadosB;
 };
 function octavosFA(g) {
@@ -2336,17 +2342,17 @@ function octavosFA(g) {
     clasif[2] = g[5];
     clasif[3] = g[10];
     clasif[4] = g[6];
-    clasif[5] = g[9];
-    clasif[6] = g[3];
+    clasif[5] = g[8];       //cambio de la organización, era 9
+    clasif[6] = g[2];       //cambio de la organización, era 3
     clasif[7] = g[12];
     clasif[8] = g[4];
     clasif[9] = g[11];
-    clasif[10] = g[1];
+    clasif[10] = g[3];      //cambio de la organización, era 1
     clasif[11] = g[14];
-    clasif[12] = g[2];
+    clasif[12] = g[1];      //cambio de la organización, era 2
     clasif[13] = g[13];
     clasif[14] = g[7];
-    clasif[15] = g[8];
+    clasif[15] = g[9];      //cambio de la organización, era 8
 
     for(let i=0; i < clasif.length; i=i+2) {
         octavosFinalA.push(new Game("", new GameTeam( clasif[i].id_cl, 0, 0, 0 ),  new GameTeam( clasif[i+1].id_cl, 0, 0, 0 )));
@@ -2381,9 +2387,9 @@ function octavosFB(g) {
     clasif[8] = g[4];
     clasif[9] = g[11];
     clasif[10] = g[1];
-    clasif[11] = g[14];
+    clasif[11] = g[13];     //cambio de la organización, era 14
     clasif[12] = g[2];
-    clasif[13] = g[13];
+    clasif[13] = g[14];     //cambio de la organización, era 13
     clasif[14] = g[7];
     clasif[15] = g[8];
 
@@ -2782,8 +2788,8 @@ function textFinalB() {
 };
 
 // IMPORTANTE PARA LOS CÁLCULOS!!! Habilitar a medida que existan resultados!!
-//window.addEventListener("load", includeRes8A() );      //inners res 8vosA
-//window.addEventListener("load", includeRes8B() );      //inners res 8vosB
+window.addEventListener("load", includeRes8A() );      //inners res 8vosA
+window.addEventListener("load", includeRes8B() );      //inners res 8vosB
 //window.addEventListener("load", includeRes4A() );      //inners res 4vosA
 //window.addEventListener("load", includeRes4B() );      //inners res 4vosB
 //window.addEventListener("load", includeRes2A() );      //inners res 2vosA
@@ -2819,7 +2825,7 @@ let txtMarque = document.getElementById("text-news");
 function cambiarMarque() {
     //txtMarque.href = "https://www.worldpadeltour.com/";
     //txtMarque.innerHTML = "WPT | Adeslas Madrid Open | Finales | Streaming LINK ==>";
-    txtMarque.innerHTML = "Últimos días!!! - Fase de Liga hasta 09/05/2021";
+    txtMarque.innerHTML = "OCTAVOS DE FINAL - Hasta 23/05/2021";
 }
 // IMPORTANTE PARA LOS CAMBIOS!!!
 window.addEventListener("load", cambiarMarque() );      //cambia texto de marquesina
