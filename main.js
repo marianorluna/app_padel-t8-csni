@@ -2327,10 +2327,10 @@ function obtenerClasifB() {
         }
     }
     //cambio de la organización, era Jordi More-Toni Paloma ahora Mariano-Borja
-    clasificadosB[11].pos_cl = allTablesFinalB[2][4].ord_po;
-    clasificadosB[11].id_cl = allTablesFinalB[2][4].id_po;
-    clasificadosB[11].pts_cl = allTablesFinalB[2][4].pts_po;
-    clasificadosB[11].elo_cl = allTablesFinalB[2][4].elo_po;     
+    // clasificadosB[11].pos_cl = allTablesFinalB[2][4].ord_po;
+    // clasificadosB[11].id_cl = allTablesFinalB[2][4].id_po;
+    // clasificadosB[11].pts_cl = allTablesFinalB[2][4].pts_po;
+    // clasificadosB[11].elo_cl = allTablesFinalB[2][4].elo_po;     
     //console.log(clasificadosB[11]);
     return clasificadosB;
 };
