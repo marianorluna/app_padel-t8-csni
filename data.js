@@ -2430,11 +2430,11 @@ let res8FB = [
     {
         //8F4
         //Set1
-        s1_t1: 0,
-        s1_t2: 0,
+        s1_t1: 4,
+        s1_t2: 6,
         //Set2
-        s2_t1: 0,
-        s2_t2: 0,
+        s2_t1: 3,
+        s2_t2: 6,
         //Set3
         s3_t1: 0,
         s3_t2: 0
@@ -2529,14 +2529,14 @@ let res4FB = [
     {
         //4F4
         //Set1
-        s1_t1: 0,
-        s1_t2: 0,
+        s1_t1: 6,
+        s1_t2: 3,
         //Set2
-        s2_t1: 0,
-        s2_t2: 0,
+        s2_t1: 3,
+        s2_t2: 6,
         //Set3
-        s3_t1: 0,
-        s3_t2: 0
+        s3_t1: 8,
+        s3_t2: 6
     }
 ];
 //Cuadros Finales - Semifinal B
