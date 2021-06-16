@@ -2792,7 +2792,7 @@ window.addEventListener("load", includeRes8A() );      //inners res 8vosA
 window.addEventListener("load", includeRes8B() );      //inners res 8vosB
 window.addEventListener("load", includeRes4A() );      //inners res 4vosA
 window.addEventListener("load", includeRes4B() );      //inners res 4vosB
-//window.addEventListener("load", includeRes2A() );      //inners res 2vosA
+window.addEventListener("load", includeRes2A() );      //inners res 2vosA
 //window.addEventListener("load", includeRes2B() );      //inners res 2vosB
 //window.addEventListener("load", includeRes1A() );      //inners res 1vosA
 //window.addEventListener("load", includeRes1B() );      //inners res 1vosB
@@ -2825,7 +2825,7 @@ let txtMarque = document.getElementById("text-news");
 function cambiarMarque() {
     //txtMarque.href = "https://www.worldpadeltour.com/";
     //txtMarque.innerHTML = "WPT | Adeslas Madrid Open | Finales | Streaming LINK ==>";
-    txtMarque.innerHTML = "CUARTOS DE FINAL - Hasta 12/06/2021";
+    txtMarque.innerHTML = "SEMIFINALES - Hasta 28/06/2021";
 }
 // IMPORTANTE PARA LOS CAMBIOS!!!
 window.addEventListener("load", cambiarMarque() );      //cambia texto de marquesina
