@@ -2825,7 +2825,7 @@ let txtMarque = document.getElementById("text-news");
 function cambiarMarque() {
     //txtMarque.href = "https://www.worldpadeltour.com/";
     //txtMarque.innerHTML = "WPT | Adeslas Madrid Open | Finales | Streaming LINK ==>";
-    txtMarque.innerHTML = "SEMIFINALES - Hasta 28/06/2021";
+    txtMarque.innerHTML = "FINAL - Hasta 11/07/2021";
 }
 // IMPORTANTE PARA LOS CAMBIOS!!!
 window.addEventListener("load", cambiarMarque() );      //cambia texto de marquesina
