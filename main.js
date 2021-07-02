@@ -2794,10 +2794,10 @@ window.addEventListener("load", includeRes4A() );      //inners res 4vosA
 window.addEventListener("load", includeRes4B() );      //inners res 4vosB
 window.addEventListener("load", includeRes2A() );      //inners res 2vosA
 window.addEventListener("load", includeRes2B() );      //inners res 2vosB
-//window.addEventListener("load", includeRes1A() );      //inners res 1vosA
-//window.addEventListener("load", includeRes1B() );      //inners res 1vosB
-window.addEventListener("load", textFinalA() );        //añade texto win A
-window.addEventListener("load", textFinalB() );        //añade texto win B
+window.addEventListener("load", includeRes1A() );      //inners res 1vosA
+window.addEventListener("load", includeRes1B() );      //inners res 1vosB
+//window.addEventListener("load", textFinalA() );        //añade texto win A
+//window.addEventListener("load", textFinalB() );        //añade texto win B
 
 // Resaltar los partidos JUGADOS
 let playGreen = document.getElementsByClassName("res-ok");
