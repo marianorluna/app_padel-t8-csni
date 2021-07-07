@@ -2796,8 +2796,8 @@ window.addEventListener("load", includeRes2A() );      //inners res 2vosA
 window.addEventListener("load", includeRes2B() );      //inners res 2vosB
 window.addEventListener("load", includeRes1A() );      //inners res 1vosA
 window.addEventListener("load", includeRes1B() );      //inners res 1vosB
-//window.addEventListener("load", textFinalA() );        //añade texto win A
-//window.addEventListener("load", textFinalB() );        //añade texto win B
+window.addEventListener("load", textFinalA() );        //añade texto win A
+window.addEventListener("load", textFinalB() );        //añade texto win B
 
 // Resaltar los partidos JUGADOS
 let playGreen = document.getElementsByClassName("res-ok");
@@ -2825,7 +2825,7 @@ let txtMarque = document.getElementById("text-news");
 function cambiarMarque() {
     //txtMarque.href = "https://www.worldpadeltour.com/";
     //txtMarque.innerHTML = "WPT | Adeslas Madrid Open | Finales | Streaming LINK ==>";
-    txtMarque.innerHTML = "FINAL - Hasta 11/07/2021";
+    txtMarque.innerHTML = "FINAL - 07/07/2021 - 20:30HS";
 }
 // IMPORTANTE PARA LOS CAMBIOS!!!
 window.addEventListener("load", cambiarMarque() );      //cambia texto de marquesina
